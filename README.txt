@@ -36,4 +36,4 @@ Currently the Islam Companion plugin displays a random verse from the Holy Quran
 
 1. Screenshot displaying quranic verse at top of the admin area
 
-2. Screenshot display option for changing language and narrator of quranic verse
+2. Screenshot displaying option for changing language and narrator of quranic verse
