@@ -1,7 +1,7 @@
 === Islam Companion ===
 Contributors: nadirlatif
 Tags: islam,quran,sunnat,hadith,message of the day,motd
-Donate link: https://www.paypal.com/se/cgi-bin/webscr?cmd=_flow&SESSION=pOGdtsevzNpxZGAJ0cAH1htqgfrTsY_uociX-IkH0-QCBBAMUN38F8y1frK&dispatch=5885d80a13c0db1f8e263663d3faee8d66f31424b43e9a70645c907a6cbd8fb4
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J27PT4VMY7XDG&lc=SE&item_name=Islam%20Companion&item_number=1&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted
 Requires at least: 3.0
 Tested up to: 4.1
 Stable tag: trunk
@@ -22,7 +22,7 @@ Search for Islam Companion on https://wordpress.org/plugins/ or login to your wo
 
 == Frequently Asked Questions ==
 
-= What does this plugin do =
+= 1. What does this plugin do =
 
 Currently the Islam Companion plugin displays a random verse from the Holy Quran at the top of the admin page. The verse is displayed in the language selected by the user. For each day a new verse is displayed.
 
@@ -35,5 +35,4 @@ Currently the Islam Companion plugin displays a random verse from the Holy Quran
 == Screenshots ==
 
 1. Screenshot displaying quranic verse at top of the admin area
-
 2. Screenshot displaying option for changing language and narrator of quranic verse
