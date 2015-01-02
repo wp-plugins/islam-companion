@@ -13,7 +13,7 @@ Islam Companion is a Wordpress plugin that helps you integrate Islamic principal
 == Description ==
 Islam Companion allows users to learn about Islam and Quran from the comfort of their Wordpress blog. The goal of this plugin is to make it easy for people to learn about Islam and to spread its teachings to others. Currently the plugin has following features:
 
-1. Display a random message from the Holy Quran in the language selected by the user
+1. Display a random verse from the Holy Quran in the language selected by the user. The random verse changes after 1 day
 
 New features will be added to the plugin. The user will have the option of enabling/disabling features. All plugin settings can be managed from the "Islam Companion" link under settings.
 
@@ -33,3 +33,7 @@ Currently the Islam Companion plugin displays a random verse from the Holy Quran
 
 == Upgrade Notice ==
 == Screenshots ==
+
+1. Screenshot displaying quranic verse at top of the admin area
+
+2. Screenshot display option for changing language and narrator of quranic verse
