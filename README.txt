@@ -41,3 +41,6 @@ ans. Currently the Islam Companion plugin displays a random verse from the Holy 
 * Corrected bugs in displaying message for the day
 
 == Screenshots ==
+
+1. This screenshot shows the message for the day feature. A random verse from the Holy Quran is displayed on the admin dashboard. The verse changes after 1 day
+2. This screenshot shows the settings for the plugin. The language and translator for the Quranic verse can be configured here
