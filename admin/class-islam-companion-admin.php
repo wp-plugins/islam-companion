@@ -39,7 +39,16 @@ class Islam_Companion_Admin {
 	 * @var      string    $version    The current version of this plugin.
 	 */
 	private $version;
-
+	
+	/**
+     * Holds the plugin objects
+	 *
+	 * @since    2.0.0
+	 * @access   private
+	 * @var      array    $plugin_objects   The objects of plugin classes.
+     */
+    private $plugin_objects;
+	
 	/**
 	 * Initialize the class and set its properties.
 	 *
@@ -51,10 +60,27 @@ class Islam_Companion_Admin {
 
 		$this->name = $name;
 		$this->version = $version;
-
+		$this->GetPluginObjects();
 	}
 
-  
+  	/**
+	 * Executes a function of the given plugin class, or all plugins classes
+	 *
+	 * @since    2.0.0
+	 * @var      string    $plugin_class       The name of the plugin class.
+	 * @var      string    $function_name    The name of the function.
+	 */
+	private function execute_plugin_function($plugin_class,$function_name) {
+
+		foreach($this->plugin_objects as $temp_plugin_class=>$plugin_object)
+			{
+				if($temp_plugin_class==$plugin_class||$plugin_class=="All")
+					{
+						if(method_exists($plugin_object, $function_name))$plugin_object->$function_name();
+					}
+			}
+	}
+	
 	/**
 	 * Register the stylesheets for the Dashboard.
 	 *
@@ -106,33 +132,74 @@ class Islam_Companion_Admin {
 	 * @since    1.0.0
 	 */
 	public function CreateSettingsPage() {
-
-		$islam_companion_settings_class = new IslamCompanionSettingsClass();
 		
+		$islam_companion_settings_class = new IslamCompanionSettingsClass($this);
+		
+	}
+	
+	/**
+	 * Function for creating the admin menus.
+	 *
+	 * @since    1.0.0
+	 */
+	public function create_custom_menu() {
+			
+		// This will add a new top level menu called "Islam Companion"
+		//add_menu_page( "Islam Companion", "Islam Companion", "manage_options", "?page=islam-companion&option=my-holy-quran", "", "/wp-content/plugins/islam-companion/admin/images/holy-quran.png");
+		
+		//$this->execute_plugin_function("All","AddSubMenu");
 	}
 	
 	
 	/**
-	 * Function for executing functions that need to be called in the admin_notices hook
+	 * Function used to return plugin objects
+	 * All plugin objects have certain common functions. e.g creating sub menus 
 	 *
 	 * @since    1.0.0
 	 */
-	public function admin_notices_hooks() {		
+	private function GetPluginObjects() {		
 
-		$message_for_the_day = new IC_MessageForTheDay();
-		$message_for_the_day->AdminNotices();	
+		$plugin_folder_name=WP_PLUGIN_DIR.DIRECTORY_SEPARATOR."islam-companion/includes/plugins";
+		
+		$file_list=scandir($plugin_folder_name);
+		$this->plugin_objects=array();
+		for($count=0;$count<count($file_list);$count++)
+			{
+				$file_name=$file_list[$count];
+				if($file_name=="."||$file_name==".."||strpos($file_name,"class-")===false)continue;
+				
+				include($plugin_folder_name.DIRECTORY_SEPARATOR.$file_name);
+				$class_name=str_replace("class-", "", $file_name);
+				$class_name=str_replace("-"," ",$class_name);
+				$class_name=ucwords($class_name);
+				$class_name=str_replace(" ", "", $class_name);
+				$class_name=str_replace(".php", "", $class_name);
+				$class_name="IC_".$class_name;
+				$this->plugin_objects[$class_name]=new $class_name();
+			}		
+	}
+	
+	/**
+	 * Function for executing plugin functions that need to be called in the admin_notices hook
+	 * url: http://codex.wordpress.org/Plugin_API/Action_Reference/admin_notices
+	 *
+	 * @since    1.0.0
+	 */
+	public function wp_dashboard_setup_hooks() {		
+
+		$this->execute_plugin_function("All","WPDashBoardSetupHook");		
 		
 	}
 	
 	/**
 	 * Function for executing functions that need to be called in the admin_head hook
+	 * url: http://codex.wordpress.org/Plugin_API/Action_Reference/admin_head
 	 *
 	 * @since    1.0.0
 	 */
 	public function admin_head_hooks() {		
 		
-		$message_for_the_day = new IC_MessageForTheDay();
-		$message_for_the_day->AdminHead();	
+		$this->execute_plugin_function("All","AdminHeadHook");
 		
 	}
 }

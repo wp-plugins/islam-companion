@@ -52,18 +52,10 @@ class IC_MessageForTheDay {
 	 * @since    1.0.0
 	 */
 	private function DisplayVerseText() {
-		global $wpdb;
-
-		$encryption = new Encryption();
-			   
-	    list($current_language,$current_narrator)=explode("~",$this->options['ic_narrator']);
-	    
-		$verse_text=file_get_contents("http://nadirlatif.me/scripts/api.php?lang=".urlencode(base64_encode($current_language))."&narrator=".urlencode(base64_encode($current_narrator)));
 		
-		$verse_text=$encryption->DecryptText($verse_text);
+		global $wp_meta_boxes;
 
-		$verse_text=wptexturize( $verse_text );
-		echo "<p id='ic_message_for_the_day'>".$verse_text."</p>";
+		wp_add_dashboard_widget('message-for-the-day-widget', 'Holy Quran Message', array($this,'CustomDashBoardText'));
 		
 	}
 	
@@ -72,47 +64,44 @@ class IC_MessageForTheDay {
 	 *
 	 * @since    1.0.0
 	 */
-	private function DisplayVerseTextCSS() {
+	public function CustomDashBoardText( $post, $callback_args ) {
 		
-		global $wpdb;
-	    $current_language=$this->options['ic_language'];
-	    $rows = $wpdb->get_results( "SELECT rtl FROM qa_quranic_text_meta WHERE language='".mysql_escape_string($current_language)."'" );
+		$encryption = new Encryption();
+			   
+	    list($current_language,$current_narrator)=explode("~",$this->options['ic_narrator']);
+	    
+		$verse_text=file_get_contents("http://nadirlatif.me/scripts/api.php?option=".urlencode(base64_encode("get_randon_verse"))."&lang=".urlencode(base64_encode($current_language))."&narrator=".urlencode(base64_encode($current_narrator)));
+		$verse_text=$encryption->DecryptText($verse_text);
+		$verse_text=wptexturize( $verse_text );
 		
-		// This makes sure that the positioning is also good for right-to-left languages
-		$x = $rows[0]->rtl ? 'right' : 'left';
-	
-		echo "
-		<style type='text/css'>
-		#ic_message_for_the_day {
-			float: $x;
-			padding-$x: 15px;
-			padding-top: 5px;		
-			margin: 0;
-			font-size: 11px;
-		}
-		</style>
-		";
+		$is_language_rtl=file_get_contents("http://nadirlatif.me/scripts/api.php?option=".urlencode(base64_encode("is_language_rtl"))."&lang=".urlencode(base64_encode($current_language)));
+		$is_language_rtl=trim($encryption->DecryptText($is_language_rtl));
+		
+		$rtl=($is_language_rtl=='true')?'right':'left';
+		
+		echo "<p style='text-align:".$rtl."'>".$verse_text."</p>";
 	}
+	
 	
 	/**
 	 * Function that need to be called in the admin_notices hook
 	 *
 	 * @since    1.0.0
 	 */
-	public function AdminNotices() {		
+	public function WPDashBoardSetupHook() {		
 		
 		$this->DisplayVerseText();
 		
 	}
 	
+	
 	/**
-	 * Function that need to be called in the admin_head hook
+	 * Function that is used to add a sub menu
 	 *
 	 * @since    1.0.0
 	 */
-	public function AdminHead() {		
-		
-		$this->DisplayVerseTextCSS();
+	public function AddSubMenu() {		
+			
 		
 	}
 }

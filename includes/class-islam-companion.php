@@ -98,14 +98,8 @@ class Islam_Companion {
 		
 		/**
 		 * The class responsible for encryption/decryption
-		 */		 
+		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/plugins/encryption.php';
-		
-		/**
-		 * The class responsible for "Message for the day" feature
-		 */		 
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/plugins/class-message-for-the-day.php';
-		
 		/**
 		 * The class responsible for constructing the settings page of the plugin
 		 */
@@ -169,7 +163,7 @@ class Islam_Companion {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-	  	$this->loader->add_action( 'admin_notices', $plugin_admin, 'admin_notices_hooks' );
+	  	$this->loader->add_action( 'wp_dashboard_setup', $plugin_admin, 'wp_dashboard_setup_hooks' );
 		$this->loader->add_action( 'admin_head', $plugin_admin, 'admin_head_hooks' );
 		// The settings page for the plugin is created
 		if( is_admin() )$plugin_admin->CreateSettingsPage();

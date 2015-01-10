@@ -9,16 +9,17 @@ class IslamCompanionSettingsClass {
     /**
      * Start up
      */
-    public function __construct()
+    public function __construct($admin_object)
     {
-        add_action( 'admin_menu', array( $this, 'add_plugin_page' ) );
-        add_action( 'admin_init', array( $this, 'page_init' ) );
+        add_action( 'admin_menu', array( $this, 'create_settings_menu' ));
+		add_action( 'admin_menu', array( $admin_object, 'create_custom_menu' ));
+        add_action( 'admin_init', array( $this, 'page_init' ) );		
     }
 
     /**
      * Add options page
      */
-    public function add_plugin_page()
+    public function create_settings_menu($admin_object)
     {
         // This page will be under "Settings"
         add_options_page(
@@ -119,15 +120,19 @@ class IslamCompanionSettingsClass {
      * Displays language dropdown
      */
     public function ic_language_callback()
-    {	    
-	    global $wpdb;
+    {	    	
+		$encryption = new Encryption();
+		
 	    $current_language=$this->options['ic_language'];
-	    $rows = $wpdb->get_results( "SELECT DISTINCT language FROM qa_quranic_text_meta" );
-	    
+
+	    $distinct_languages=file_get_contents("http://nadirlatif.me/scripts/api.php?option=".urlencode(base64_encode("get_distinct_languages")));	
+		$distinct_languages=trim($encryption->DecryptText($distinct_languages));	
+		$distinct_languages=json_decode($distinct_languages,true);
+	 
 	    $options="<option value=''>--Please Select--</option>";
-	   	for($count=0;$count<count($rows);$count++)
+	   	for($count=0;$count<count($distinct_languages);$count++)
 	   		{
-		   		$language=$rows[$count]->language;
+		   		$language=$distinct_languages[$count]['language'];
 		   		if($language!="")
 		   			{
 			   			if($current_language==$language)$options.="<option value='".($language)."' SELECTED>".$language."</option>\n";
@@ -145,20 +150,25 @@ class IslamCompanionSettingsClass {
      * Displays narrator dropdown
      */
     public function ic_narrator_callback()
-    {
-	    global $wpdb;
-	    	   
-	    list($current_langauge,$current_narrator)=explode("~",$this->options['ic_narrator']);
-	    $rows = $wpdb->get_results( "SELECT language,translator FROM qa_quranic_text_meta GROUP BY translator" );
+    {	    
+		$encryption = new Encryption();
+		
+	    $current_language=$this->options['ic_language'];
 
+	    $languages_narrator=file_get_contents("http://nadirlatif.me/scripts/api.php?option=".urlencode(base64_encode("get_distinct_languages_translators")));
+		$languages_narrator=trim($encryption->DecryptText($languages_narrator));
+		$languages_narrator=json_decode($languages_narrator,true);
+	    	
+	    list($current_langauge,$current_narrator)=explode("~",$this->options['ic_narrator']);
+	   
 	    if($current_langauge=="")$options_str='<option value="">--Please select a language first--</option>'."\n";
 	    else $options_str='<option value="">--Please select--</option>'."\n";
 	    
 	    $options_arr=array();
-	   	for($count=0;$count<count($rows);$count++)
+	   	for($count=0;$count<count($languages_narrator);$count++)
 	   		{
-		   		$language=(utf8_decode($rows[$count]->language));
-		   		$narrator=(utf8_decode($rows[$count]->translator));
+		   		$language=(utf8_decode($languages_narrator[$count]['language']));
+		   		$narrator=(utf8_decode($languages_narrator[$count]['translator']));
 		   		if($language!="")
 		   			{
 			   			$options_arr[]=$language."~".$narrator;
