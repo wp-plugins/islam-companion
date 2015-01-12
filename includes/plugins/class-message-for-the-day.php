@@ -59,6 +59,21 @@ class IC_MessageForTheDay {
 		
 	}
 	
+	
+	/**
+	 * Sets default options if no options were set by the user
+	 *
+	 * @since    1.0.2
+	 */
+	private function SetDefaultOptions() {
+		
+		if(!isset($this->options['ic_narrator'])||(isset($this->options['ic_narrator'])&&$this->options['ic_narrator']==''))$this->options['ic_narrator']="Mohammed Marmaduke William Pickthall";
+		if(!isset($this->options['ic_language'])||(isset($this->options['ic_language'])&&$this->options['ic_language']==''))$this->options['ic_language']="English";
+		if(!isset($this->options['ic_sura'])||(isset($this->options['ic_sura'])&&$this->options['ic_sura']==''))$this->options['ic_sura']="Al-Faatiha~7";
+		if(!isset($this->options['ic_aya'])||(isset($this->options['ic_aya'])&&$this->options['ic_aya']==''))$this->options['ic_aya']="1";
+		if(!isset($this->options['ic_ayat_count'])||(isset($this->options['ic_ayat_count'])&&$this->options['ic_ayat_count']==''))$this->options['ic_ayat_count']="5";
+	}
+	
 	/**
 	 * Returns a random Quranic verse from the Holy Quran for the given language and translator
 	 *
@@ -67,6 +82,8 @@ class IC_MessageForTheDay {
 	public function CustomDashBoardText( $post, $callback_args ) {
 		
 		$encryption = new Encryption();
+		
+		$this->SetDefaultOptions();
 		
 	    list($current_language,$current_narrator)=explode("~",$this->options['ic_narrator']);
 	    $current_language=$this->options['ic_language'];
