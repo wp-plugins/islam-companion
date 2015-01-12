@@ -1,13 +1,32 @@
+var current_sura;
+var current aya;
+
 function ValidateICSettingsForm()
 	{
 		var ic_language_str=document.getElementById('ic_language').value;
 		var ic_narrator_str=document.getElementById('ic_narrator').value;
+		var ic_sura_str=document.getElementById('ic_sura').value;
+		var ic_aya_str=document.getElementById('ic_aya').value;
+		var ic_ayat_count_str=document.getElementById('ic_ayat_count').value;
 		
 		if(ic_language_str==""){alert("Please select a language");return false;}
 		if(ic_narrator_str==""){alert("Please select a narrator");return false;}
+		if(ic_sura_str==""){alert("Please select a sura");return false;}
+		if(ic_aya_str==""){alert("Please select an ayat");return false;}
+		if(ic_ayat_count_str==""){alert("Please the ayat count");return false;}
 		return true;
 	}
 
+function FetchVerseData()
+	{
+		$.ajax({
+				  url: "test.html",
+				  context: document.body
+				}).done(function() {
+				  $( this ).addClass( "done" );
+			});
+	}
+	
 (function( $ ) {
 	'use strict';
 
@@ -59,6 +78,21 @@ function ValidateICSettingsForm()
 		  					{			  					
 								$('#ic_narrator').append($('<option></option>').val(ic_language_str+"~"+temp_narrator).html(temp_narrator));											  			
 		  					}
+	  				}
+		 });
+		 
+		 $("#ic_sura").on("change",function(){
+			 	$('#ic_aya').empty();
+			 	var ic_sura_str=$("#ic_sura").val();	  			
+			 	ic_sura_str=ic_sura_str.replace('\\','');	  			
+	  			var temp_arr=ic_sura_str.split("~");
+	  			var ayas=parseInt(temp_arr[1]);
+	  			
+	  			if(ic_sura_str!="")$('#ic_aya').append($('<option></option>').val("").html("--Please Select--"));
+	  			else $('#ic_sura').append($('<option></option>').val("").html("--Please select a sura first--"));
+	  			for(var count=1;count<=ayas;count++)
+	  				{
+		  				$('#ic_aya').append($('<option></option>').val(count).html(count));		  				
 	  				}
 		 });
 	 });

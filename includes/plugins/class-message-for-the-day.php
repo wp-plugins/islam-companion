@@ -55,7 +55,7 @@ class IC_MessageForTheDay {
 		
 		global $wp_meta_boxes;
 
-		wp_add_dashboard_widget('message-for-the-day-widget', 'Holy Quran Message', array($this,'CustomDashBoardText'));
+		wp_add_dashboard_widget('message-for-the-day-widget', 'Holy Quran', array($this,'CustomDashBoardText'));
 		
 	}
 	
@@ -67,10 +67,14 @@ class IC_MessageForTheDay {
 	public function CustomDashBoardText( $post, $callback_args ) {
 		
 		$encryption = new Encryption();
-			   
+		
 	    list($current_language,$current_narrator)=explode("~",$this->options['ic_narrator']);
-	    
-		$verse_text=file_get_contents("http://nadirlatif.me/scripts/api.php?option=".urlencode(base64_encode("get_randon_verse"))."&lang=".urlencode(base64_encode($current_language))."&narrator=".urlencode(base64_encode($current_narrator)));
+	    $current_language=$this->options['ic_language'];
+		list($current_sura,$ayat_count)=explode("~",$this->options['ic_sura']);
+		$current_aya=$this->options['ic_aya'];
+		$current_aya_count=$this->options['ic_ayat_count'];
+		
+		$verse_text=file_get_contents("http://nadirlatif.me/scripts/api.php?option=".urlencode(base64_encode("get_sura_verses"))."&lang=".urlencode(base64_encode($current_language))."&narrator=".urlencode(base64_encode($current_narrator))."&sura=".urlencode(base64_encode($current_sura))."&aya=".urlencode(base64_encode($current_aya))."&aya_count=".urlencode(base64_encode($current_aya_count)));
 		$verse_text=$encryption->DecryptText($verse_text);
 		$verse_text=wptexturize( $verse_text );
 		
@@ -78,8 +82,24 @@ class IC_MessageForTheDay {
 		$is_language_rtl=trim($encryption->DecryptText($is_language_rtl));
 		
 		$rtl=($is_language_rtl=='true')?'right':'left';
+		$direction=($is_language_rtl=='true')?'rtl':'ltr';
+	
+		$ayat_text_str="";
+		$ayat_text_arr=explode("~",$verse_text);
 		
-		echo "<p style='text-align:".$rtl."'>".$verse_text."</p>";
+		for($count=0;$count<count($ayat_text_arr);$count++)
+			{
+				if($rtl=="left")$ayat_text_str.="<li>".$ayat_text_arr[$count]."</li>";	
+				else $ayat_text_str.=$ayat_text_arr[$count]."</br>";
+			}
+			
+		if($rtl=="left")$ayat_text_str="<ol>".$ayat_text_str."</ol>";	
+		
+		if($rtl=="right")echo "<p style='direction:".$direction.";text-align:".$rtl.";word-wrap: break-word;font-size:120%;font-weight: bold;'>".$ayat_text_str."</p>";
+		else echo "<p style='direction:".$direction.";text-align:".$rtl.";word-wrap: break-word;'>".$ayat_text_str."</p>";
+		
+		//echo "<b><a href='#' onclick='FetchVerseData();'>&laquo; prev</a> | <a href='#' onclick='FetchVerseData();'>next &raquo;</a></b><br/>";
+		echo "<p><b>Surah: ".$current_sura." (verse ".$current_aya."-".($current_aya+$current_aya_count).")</b></p>";
 	}
 	
 	

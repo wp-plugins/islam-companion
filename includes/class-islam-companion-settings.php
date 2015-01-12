@@ -87,7 +87,31 @@ class IslamCompanionSettingsClass {
             array( $this, 'ic_narrator_callback' ), 
             'islam-companion-settings-admin', 
             'ic_settings_id'
-        );  
+        );
+		
+		add_settings_field(
+            'ic_sura', 
+            'Surah', 
+            array( $this, 'ic_sura_callback' ), 
+            'islam-companion-settings-admin', 
+            'ic_settings_id'
+        );     
+		
+		add_settings_field(
+            'ic_aya', 
+            'Aya', 
+            array( $this, 'ic_aya_callback' ), 
+            'islam-companion-settings-admin', 
+            'ic_settings_id'
+        );   
+		
+		add_settings_field(
+            'ic_ayat_count', 
+            'Ayat Count', 
+            array( $this, 'ic_ayat_callback' ), 
+            'islam-companion-settings-admin', 
+            'ic_settings_id'
+        );   
     }
 
     /**
@@ -105,6 +129,15 @@ class IslamCompanionSettingsClass {
         if( isset( $input['ic_narrator'] ) )
             $new_input['ic_narrator'] = sanitize_text_field( $input['ic_narrator'] );
             
+		if( isset( $input['ic_sura'] ) )
+            $new_input['ic_sura'] = sanitize_text_field( $input['ic_sura'] );
+			
+		if( isset( $input['ic_aya'] ) )
+            $new_input['ic_aya'] = sanitize_text_field( $input['ic_aya'] );
+			
+		if( isset( $input['ic_ayat_count'] ) )
+            $new_input['ic_ayat_count'] = sanitize_text_field( $input['ic_ayat_count'] );
+		
         return $new_input;
     }
 
@@ -114,6 +147,50 @@ class IslamCompanionSettingsClass {
     public function print_section_info()
     {
         print '';
+    }
+
+	/** 
+     * Displays ayat dropdown
+     */
+    public function ic_ayat_callback()
+    {	    	
+	    $current_ayat_count=$this->options['ic_ayat_count'];
+	 	
+	    $options="<option value=''>--Please Select--</option>";	   	
+
+		for($count=1;$count<=10;$count++)
+			{
+				if($count==$current_ayat_count)$options.="<option value='".$count."' SELECTED>".$count."</option>\n";	   	
+				else $options.="<option value='".$count."'>".$count."</option>\n";
+			}
+			
+        printf(
+		  '<select id="ic_ayat_count" name="ic_options[ic_ayat_count]" value="'.$current_ayat_count.'">'.$options.'</select>',
+            isset( $this->options['ic_ayat_count'] ) ? esc_attr( $this->options['ic_ayat_count']) : ''
+        );
+    }
+	
+	/** 
+     * Displays ayat dropdown
+     */
+    public function ic_aya_callback()
+    {	    	
+	    $current_ayat=$this->options['ic_aya'];
+	 	$current_sura_ayat=$this->options['ic_sura'];
+		list($current_sura,$ayas)=explode("~",$current_sura_ayat);
+		
+	    $options="<option value=''>--Please Select--</option>";	   	
+
+		for($count=1;$count<=$ayas;$count++)
+			{
+				if($count==$current_ayat)$options.="<option value='".$count."' SELECTED>".$count."</option>\n";	   	
+				else $options.="<option value='".$count."'>".$count."</option>\n";
+			}
+			
+        printf(
+		  '<select id="ic_aya" name="ic_options[ic_aya]" value="'.$current_ayat.'">'.$options.'</select>',
+            isset( $this->options['ic_aya'] ) ? esc_attr( $this->options['ic_aya']) : ''
+        );
     }
 
     /** 
@@ -129,23 +206,55 @@ class IslamCompanionSettingsClass {
 		$distinct_languages=trim($encryption->DecryptText($distinct_languages));	
 		$distinct_languages=json_decode($distinct_languages,true);
 	 
-	    $options="<option value=''>--Please Select--</option>";
+	    $options='<option value="">--Please Select--</option>';
 	   	for($count=0;$count<count($distinct_languages);$count++)
 	   		{
 		   		$language=$distinct_languages[$count]['language'];
 		   		if($language!="")
 		   			{
-			   			if($current_language==$language)$options.="<option value='".($language)."' SELECTED>".$language."</option>\n";
-			   			else $options.="<option value='".($language)."'>".$language."</option>\n";
+			   			if($current_language==$language)$options.='<option value="'.($language).'" SELECTED>'.$language.'</option>'."\n";
+			   			else $options.='<option value="'.($language).'">'.$language.'</option>'."\n";
 		   			}
 	   		}
 
         printf(
-		  '<select id="ic_language" name="ic_options[ic_language]" id="ic_language" value="'.$current_language.'">'.$options.'</select>',
+		  '<select id="ic_language" name="ic_options[ic_language]" value="'.$current_language.'">'.$options.'</select>',
             isset( $this->options['ic_language'] ) ? esc_attr( $this->options['ic_language']) : ''
         );
     }
     
+    /** 
+     * Displays Surah dropdown
+     */
+    public function ic_sura_callback()
+    {	    	
+		$encryption = new Encryption();
+		
+	    $current_sura_ayat=$this->options['ic_sura'];
+
+	    $sura_names=file_get_contents("http://nadirlatif.me/scripts/api.php?option=".urlencode(base64_encode("get_sura_names")));	
+		$sura_names=trim($encryption->DecryptText($sura_names));	
+		$sura_names=json_decode($sura_names,true);
+	 
+	    $options='<option value="">--Please Select--</option>';
+	   	for($count=0;$count<count($sura_names);$count++)
+	   		{
+		   		$sura=$sura_names[$count]['sura'];
+				$ayas=$sura_names[$count]['ayas'];
+				$temp_sura_ayat=addslashes($sura."~".$ayas);
+		   		if($sura!="")
+		   			{
+			   			if($current_sura_ayat==($temp_sura_ayat))$options.='<option value="'.($temp_sura_ayat).'" SELECTED>'.$sura.'</option>'."\n";
+			   			else $options.='<option value="'.($temp_sura_ayat).'">'.$sura.'</option>'."\n";
+		   			}
+	   		}
+
+        printf(
+		  '<select id="ic_sura" name="ic_options[ic_sura]" value="'.$current_sura.'">'.$options.'</select>',
+            isset( $this->options['ic_sura'] ) ? esc_attr( $this->options['ic_sura']) : ''
+        );
+    }
+
    /** 
      * Displays narrator dropdown
      */

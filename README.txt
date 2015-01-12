@@ -4,7 +4,7 @@ Tags: islam,quran,sunnat,hadith,message of the day,motd
 Donate link: https://www.paypal.com/se/cgi-bin/webscr?cmd=_flow&SESSION=pOGdtsevzNpxZGAJ0cAH1htqgfrTsY_uociX-IkH0-QCBBAMUN38F8y1frK&dispatch=5885d80a13c0db1f8e263663d3faee8d66f31424b43e9a70645c907a6cbd8fb4
 Requires at least: 3.0
 Tested up to: 4.1
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLV2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,7 @@ Islamic Companion is a Wordpress plugin that helps you integrate Islamic princip
 == Description ==
 Islamic Companion allows users to learn about Islam and Quran from the comfort of their Wordpress blog. The goal of this plugin is to make it easy for people to learn about Islam and to spread its teachings to others. Currently the plugin has following features:
 
-1. Display a random message from the Holy Quran in the language selected by the user. The message is displayed on the admin Dashboard
+1. Display verses from the Holy Quran in the language selected by the user. The message is displayed on the admin dashboard.
 
 New features will be added to the plugin. The user will have the option of enabling/disabling features. All plugin settings can be managed from the "Islam Companion" link under settings.
 
@@ -22,9 +22,13 @@ Search for Islam Companion on https://wordpress.org/plugins/ or login to your wo
 
 == Frequently Asked Questions ==
 1. What does this plugin do
-ans. Currently the Islam Companion plugin displays a random verse from the Holy Quran on a dashbord. The verse is displayed in the language selected by the user. For each day a new verse is displayed.
+ans. Currently the Islam Companion plugin displays verses from the Holy Quran on the dashboard widget. The verse is displayed according to the user settings. The user can specify the language, narrator, suran, aya and number of verses.
 
 == Changelog ==
+
+= 1.0.2 =
+* Added option under settings for saving the surah, verse and verse count
+* Updated dashboard widget so it displays Quranic verses according to the settings
 
 = 1.0.1 =
 * Moved message for the day text to admin dashboard widget
@@ -35,6 +39,10 @@ ans. Currently the Islam Companion plugin displays a random verse from the Holy 
 * Added function that displays Quranic verse at top of the admin page
 
 == Upgrade Notice ==
+
+= 1.0.2 =
+* Updated Holy Quran dashboard widget so it displays the verses according to the configured settings
+* Added option under settings for saving the surah, verse and verse count
 
 = 1.0.1 =
 * Message for the day text is now displayed in admin dashboard widget
