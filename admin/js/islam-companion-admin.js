@@ -1,5 +1,5 @@
 var current_sura;
-var current aya;
+var current_aya;
 
 function ValidateICSettingsForm()
 	{
