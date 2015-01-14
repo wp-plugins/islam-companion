@@ -202,4 +202,22 @@ class Islam_Companion_Admin {
 		$this->execute_plugin_function("All","AdminHeadHook");
 		
 	}
+	
+	/**
+	 * Function for executing functions that need to be called in the wp_ajax_islam_companion hook
+	 * url: http://codex.wordpress.org/AJAX_in_Plugins
+	 *
+	 * @since    1.0.3
+	 */
+	public function islam_companion_callback() {		
+		
+		if(!isset($_POST['plugin'])||!isset($_POST['action']))wp_die();
+		
+		check_ajax_referer('islam-companion', 'security' );
+		
+		$plugin_name=$_POST['plugin'];
+		$this->execute_plugin_function($plugin_name,"IslamCompanionAjax");
+		
+	}
+	
 }

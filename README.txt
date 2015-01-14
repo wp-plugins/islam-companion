@@ -4,7 +4,7 @@ Tags: islam,quran,sunnat,hadith,message of the day,motd
 Donate link: https://www.paypal.com/se/cgi-bin/webscr?cmd=_flow&SESSION=pOGdtsevzNpxZGAJ0cAH1htqgfrTsY_uociX-IkH0-QCBBAMUN38F8y1frK&dispatch=5885d80a13c0db1f8e263663d3faee8d66f31424b43e9a70645c907a6cbd8fb4
 Requires at least: 3.0
 Tested up to: 4.1
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLV2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,6 +26,10 @@ ans. Currently the Islam Companion plugin displays verses from the Holy Quran on
 
 == Changelog ==
 
+= 1.0.3 =
+* Added next and previous links to admin dashboard widget. the user can browser Quranic verses using these links
+* Added meta information of the Quranic verses to the admin dashboard widget
+
 = 1.0.2 =
 * Added option under settings for saving the surah, verse and verse count
 * Updated dashboard widget so it displays Quranic verses according to the settings
@@ -40,6 +44,10 @@ ans. Currently the Islam Companion plugin displays verses from the Holy Quran on
 
 == Upgrade Notice ==
 
+= 1.0.3 =
+* Updated Holy Quran dashboard widget so it allows user to browse the Quranic verses using next,prev links
+* Add verse information to the Holy Quran dashboard widget
+
 = 1.0.2 =
 * Updated Holy Quran dashboard widget so it displays the verses according to the configured settings
 * Added option under settings for saving the surah, verse and verse count
@@ -50,5 +58,5 @@ ans. Currently the Islam Companion plugin displays verses from the Holy Quran on
 
 == Screenshots ==
 
-1. This screenshot shows the message for the day feature. A random verse from the Holy Quran is displayed on the admin dashboard. The verse changes after 1 day
-2. This screenshot shows the settings for the plugin. The language and translator for the Quranic verse can be configured here
+1. This screenshot shows the message for the day feature. Verses from the Holy Quran are displayed on the admin dashboard. The user can browse the verses using navigation links. The meta information for the links is also displayed
+2. This screenshot shows the settings for the plugin. The language and translator for the Quranic verse can be configured here. The surah, aya number and number of ayas can also be configured

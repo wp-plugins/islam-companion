@@ -165,6 +165,7 @@ class Islam_Companion {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 	  	$this->loader->add_action( 'wp_dashboard_setup', $plugin_admin, 'wp_dashboard_setup_hooks' );
 		$this->loader->add_action( 'admin_head', $plugin_admin, 'admin_head_hooks' );
+		$this->loader->add_action( 'wp_ajax_islam_companion', $plugin_admin, 'islam_companion_callback' );
 		// The settings page for the plugin is created
 		if( is_admin() )$plugin_admin->CreateSettingsPage();
 	}

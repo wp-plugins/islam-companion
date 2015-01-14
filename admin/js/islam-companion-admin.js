@@ -1,6 +1,8 @@
-var current_sura;
-var current_aya;
-
+/**
+	 * Checks if settings form contains valid data
+	 *
+	 * @since    1.0.0
+*/
 function ValidateICSettingsForm()
 	{
 		var ic_language_str=document.getElementById('ic_language').value;
@@ -17,14 +19,25 @@ function ValidateICSettingsForm()
 		return true;
 	}
 
-function FetchVerseData()
-	{
-		$.ajax({
-				  url: "test.html",
-				  context: document.body
-				}).done(function() {
-				  $( this ).addClass( "done" );
-			});
+/**
+	 * Fetches verse data from the server	 
+	 *
+	 * @since    1.0.3
+*/
+function FetchVerseData(ajax_nonce,direction)
+	{		
+		var data = {
+					action: 'islam_companion',
+					plugin_action: 'fetch_verse_data',
+					security: ajax_nonce,
+					plugin: 'IC_MessageForTheDay',
+					direction: direction
+		};
+		
+		// We can also pass the url value separately from ajaxurl for front end AJAX implementations
+		jQuery.post('admin-ajax.php', data, function(response) {						
+			jQuery("#ic-quran-dashboard-text").html(response);
+		});
 	}
 	
 (function( $ ) {
@@ -60,6 +73,11 @@ function FetchVerseData()
 
 	 $( window ).load(function() {		 
 		 
+		/**
+		 * Handles language dropdown click event
+		 *
+		 * @since    1.0.0
+		*/		 
 		 $("#ic_language").on("change",function(){
 			 	$('#ic_narrator').empty();
 			 	var ic_language_str=$("#ic_language").val();	  			
@@ -81,6 +99,11 @@ function FetchVerseData()
 	  				}
 		 });
 		 
+		 /**
+		 * Handles sura dropdown click event
+		 *
+		 * @since    1.0.2
+		*/	
 		 $("#ic_sura").on("change",function(){
 			 	$('#ic_aya').empty();
 			 	var ic_sura_str=$("#ic_sura").val();	  			

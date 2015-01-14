@@ -13,7 +13,7 @@ class IslamCompanionSettingsClass {
     {
         add_action( 'admin_menu', array( $this, 'create_settings_menu' ));
 		add_action( 'admin_menu', array( $admin_object, 'create_custom_menu' ));
-        add_action( 'admin_init', array( $this, 'page_init' ) );		
+        add_action( 'admin_init', array( $this, 'page_init' ) );	
     }
 
     /**
@@ -51,6 +51,8 @@ class IslamCompanionSettingsClass {
             ?>
             </form>
             <div>Powered By: <a href='http://tanzil.net/trans/' target='_new'>http://tanzil.net/trans/</a></div>
+            <div>Report a bug: <a href='https://wordpress.org/support/plugin/islam-companion' target='_new'>https://wordpress.org/support/plugin/islam-companion</a></div>
+            <div>Suggest a feature: <a href='https://wordpress.org/support/plugin/islam-companion' target='_new'>https://wordpress.org/support/plugin/islam-companion</a></div>
         </div>
         <?php
     }
@@ -59,7 +61,7 @@ class IslamCompanionSettingsClass {
      * Register and add settings
      */
     public function page_init()
-    {        
+    {       
         register_setting(
             'ic_option_group', // Option group
             'ic_options', // Option name
