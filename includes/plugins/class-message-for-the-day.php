@@ -43,7 +43,7 @@ class IC_MessageForTheDay {
 
 		// Set class property
         $this->options = get_option( 'ic_options' );
-        
+        $this->SetDefaultOptions();
 	}
 
 	/**
@@ -72,6 +72,8 @@ class IC_MessageForTheDay {
 		if(!isset($this->options['ic_sura'])||(isset($this->options['ic_sura'])&&$this->options['ic_sura']==''))$this->options['ic_sura']="Al-Faatiha~7";
 		if(!isset($this->options['ic_aya'])||(isset($this->options['ic_aya'])&&$this->options['ic_aya']==''))$this->options['ic_aya']="1";
 		if(!isset($this->options['ic_ayat_count'])||(isset($this->options['ic_ayat_count'])&&$this->options['ic_ayat_count']==''))$this->options['ic_ayat_count']="5";
+		
+		update_option("ic_options",$this->options);
 	}
 	
 	/**
@@ -105,8 +107,6 @@ class IC_MessageForTheDay {
 	 * @since    1.0.0
 	 */
 	public function CustomDashBoardText( $post, $callback_args ) {				
-		
-		$this->SetDefaultOptions();
 		
 		$parsed_options=$this->GetDefaultOptions();
 	    
@@ -145,7 +145,7 @@ class IC_MessageForTheDay {
 			
 			$previous_link=$next_link=$separator="";
 			if($parsed_options['current_aya']>1)$previous_link="<div style='font-size: 10pt;direction:ltr;float: ".$navigator_direction."'><b><a href='#' onclick='FetchVerseData(\"".$ajax_nonce."\",\"prev\");'>&laquo; prev</a>";
-	 		else $previous_link="</div><br/>";
+	 		else $previous_link="<div style='font-size: 10pt;direction:ltr;float: ".$navigator_direction."'><b>";
 					
 			if($end_aya<$parsed_options['total_ayat_count'])$next_link="<a href='#' onclick='FetchVerseData(\"".$ajax_nonce."\",\"next\");'>next &raquo;</a></b></div><br/>";
 			else $next_link="</div><br/>";
