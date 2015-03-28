@@ -30,16 +30,16 @@ ans. The plugin uses Holy Quran translations from http://tanzil.net/trans/
 == Changelog ==
 
 = 1.0.5 =
-* Added internationalization and localization to the plugin. The plugin text is displayed in the users own language. Currently the plugin only contains translations in Urdu language. Translations in other languages can easily be created
+* Replaced option for selecting ayat with option for selecting ruku
+* Added audio player for listening to Quranic Verses
 * Added multi user and multi site support. It allows each user to have his own plugin settings
+* Added internationalization and localization to the plugin. The plugin text is displayed in the users own language. Currently the plugin only contains translations in Urdu language. Translations in other languages can easily be created
 * Added css classes for displaying verses with bullet numbering in the language of the user. If the user language is not supported then a default numbered bullet is displayed
-* Uploaded media files to content delivery network. Added audio player for listening to Quranic Verses
+* Uploaded media files to content delivery network
 * Secured the plugin code by adding try/catch statements, exception throwing, exception handling and error logging
 * Removed addslashes function on line 246 in file class-islam-companion-settings.php
 * Corrected PayPal donation link
 * Updated plugin description
-* Replaced option for selecting ayat with option for selecting ruku
-* Renamed "Message of the day" feature to "Holy Quran Dashboard Widget" 
 
 = 1.0.4 =
 * Corrected layout bug in admin dashboard widget 
@@ -64,11 +64,11 @@ ans. The plugin uses Holy Quran translations from http://tanzil.net/trans/
 == Upgrade Notice ==
 
 = 1.0.5 =
-* Added internationalization and localization to the plugin. The plugin text is displayed in the users own language. Currently the plugin only contains translations in Urdu language. Translations in other languages can easily be created
-* Added multi user and multi site support. It allows each user to have his own plugin settings
 * Added audio player for listening to Quranic Verses in Arabic and Urdu languages
-* Secured the plugin code by adding error handling and logging
 * Updated settings page and replaced option for selecting ayat with option for selecting ruku
+* Added multi user and multi site support. It allows each user to have his own plugin settings
+* Added internationalization and localization to the plugin. The plugin text is displayed in the users own language. Currently the plugin only contains translations in Urdu language. Translations in other languages can easily be created
+* Secured the plugin code by adding error handling and logging
 
 = 1.0.4 =
 * Corrected layout bug in admin dashboard widget 
