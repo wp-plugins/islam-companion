@@ -1,0 +1,20 @@
+/**
+ * All of the CSS for your dashboard-specific functionality should be
+ * included in this file.
+ */
+.float-left{float:left;font-size: 10pt;}
+.float-right{float:right;font-size: 10pt;}
+.navigator-class{font-size: 10pt;float: right;cursor: pointer;}
+.rtl-dashboard-text{line-height:25px;font-size: 13pt;direction:rtl;text-align:right;word-wrap: break-word;font-weight: bold;}
+.ltr-dashboard-text{direction:ltr;text-align:left;word-wrap: break-word;}
+.persian{list-style-type: persian;margin-right: 8%;}
+.amharic{list-style-type: amharic}
+.arabic-indic{list-style-type: arabic-indic;margin-right: 8%;}
+.bengali{list-style-type: bengali}
+.disc{list-style-type: disc;margin-right: 8%;}
+.lower-norwegian{list-style-type: lower-norwegian}
+.malayalam{list-style-type: malayalam;margin-right: 8%;}
+.somali{list-style-type: somali;margin-right: 8%;}
+.thai{list-style-type: thai}
+.decimal{list-style-type: decimal}
+.urdu{list-style-type: urdu;margin-right: 8%;margin-left: 1em;}

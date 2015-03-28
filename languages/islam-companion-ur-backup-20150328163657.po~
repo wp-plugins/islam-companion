@@ -1,0 +1,136 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Islam Companion\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: Mon Mar 23 2015 17:04:25 GMT+0500 (Pakistan Standard "
+"Time)\n"
+"PO-Revision-Date: Mon Mar 23 2015 17:43:37 GMT+0500 (Pakistan Standard Time)\n"
+"Last-Translator: admin <nadir@nadirlatif.me>\n"
+"Language-Team: \n"
+"Language: Urdu\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
+"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
+"_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
+"esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
+"esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
+"X-Generator: Loco - https://localise.biz/\n"
+"X-Loco-Target-Locale: ur_IN"
+
+#: ../includes/class-islam-companion-settings.php:36 ../includes/class-islam-
+#: companion-settings.php:62
+msgid "Islam Companion Settings"
+msgstr "اسلام ساتھی ترتیبات"
+
+#: ../includes/class-islam-companion-settings.php:37
+msgid "Islam Companion"
+msgstr "اسلام ساتھی"
+
+#: ../includes/class-islam-companion-settings.php:68
+msgid "Save Changes"
+msgstr "تبدیلیاں محفوظ کریں"
+
+#: ../includes/class-islam-companion-settings.php:71
+msgid "Powered By"
+msgstr "از: وی بلیٹن"
+
+#: ../includes/class-islam-companion-settings.php:72
+msgid "Report a bug"
+msgstr "بگ کی رپورٹ"
+
+#: ../includes/class-islam-companion-settings.php:73
+msgid "Suggest a feature"
+msgstr "ایک خصوصیت تجویز کریں"
+
+#: ../includes/class-islam-companion-settings.php:106
+msgid "Language"
+msgstr "زبان"
+
+#: ../includes/class-islam-companion-settings.php:114
+msgid "Narrator"
+msgstr "راوی"
+
+#: ../includes/class-islam-companion-settings.php:122
+msgid "Surah"
+msgstr "سورہ"
+
+#: ../includes/class-islam-companion-settings.php:130
+msgid "Ruku"
+msgstr "رکوع"
+
+#: ../includes/class-islam-companion-settings.php:193 ../includes/class-islam-
+#: companion-settings.php:232 ../includes/class-islam-companion-settings.php:275 .
+#: ./admin/class-islam-companion-admin.php:149
+msgid "Please Select"
+msgstr " منتخب کریں"
+
+#: ../includes/class-islam-companion-settings.php:323 ../admin/class-islam-
+#: companion-admin.php:147
+msgid "Please select a language first"
+msgstr " زبان کا انتخاب کریں"
+
+#: ../includes/class-islam-companion-settings.php:324
+msgid "Please select"
+msgstr " منتخب کریں"
+
+#: ../includes/plugins/class-holy-quran-dashboard-widget.php:191 ..
+#: includes/plugins/class-holy-quran-dashboard-widget.php:197
+msgid "prev"
+msgstr "سابقہ"
+
+#: ../includes/plugins/class-holy-quran-dashboard-widget.php:192 ..
+#: includes/plugins/class-holy-quran-dashboard-widget.php:198
+msgid "next"
+msgstr "اگلے"
+
+#: ../includes/plugins/class-holy-quran-dashboard-widget.php:215
+#, php-format
+msgid ""
+"<span class='float-left'><b>%1$s: %2$s, %3$s <span>%4$d</span> of <span "
+"id='ic-total-rakaat-count'>%5$d</span>"
+msgstr ""
+"<span class='float-left'><b>%1$s: %2$s, %3$s <span>%4$d</span> of <span "
+"id='ic-total-rakaat-count'>%5$d</span>"
+
+#: ../includes/plugins/class-holy-quran-dashboard-widget.php:216
+msgid "Aya"
+msgstr "آیت"
+
+#: ../includes/plugins/class-holy-quran-dashboard-widget.php:236
+msgid "Holy Quran"
+msgstr "قرآن کریم"
+
+#: ../includes/plugins/class-logging.php:95 ../includes/plugins/class-logging.php:
+#: 143
+msgid "An error occurred in the Islam Companion Plugin. Please try again."
+msgstr "ایک خامی پیش آگئی . براہ مہربانی انتظار کریں ."
+
+#: ../admin/class-islam-companion-admin.php:142
+msgid "Please select a language"
+msgstr " زبان کا انتخاب کریں"
+
+#: ../admin/class-islam-companion-admin.php:143
+msgid "Please select a narrator"
+msgstr "راوی منتخب کریں"
+
+#: ../admin/class-islam-companion-admin.php:144
+msgid "Please select a sura"
+msgstr "سورت منتخب کریں"
+
+#: ../admin/class-islam-companion-admin.php:145
+msgid "Please select a ruku"
+msgstr " رکوع منتخب کریں"
+
+#: ../admin/class-islam-companion-admin.php:146
+msgid "An error occurred while trying to get data from server. Please try again"
+msgstr "سرور سے ڈیٹا حاصل کرنے کی کوشش کے دوران ایک خامی پیش آگئی . دوبارہ کوشش کریں"
+
+#: ../admin/class-islam-companion-admin.php:148
+msgid "Please select a sura first"
+msgstr "سورت منتخب کریں"
