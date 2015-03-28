@@ -39,6 +39,8 @@ Search for Islam Companion on https://wordpress.org/plugins/ or login to your wo
 * Corrected PayPal donation link
 * Updated plugin description
 
+* Renamed "Message of the day" feature to "Holy Quran Dashboard Widget" 
+
 = 1.0.4 =
 * Corrected layout bug in admin dashboard widget 
 * Added default settings for plugin

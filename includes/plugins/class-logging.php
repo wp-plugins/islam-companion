@@ -132,7 +132,7 @@ class Logger
 						if($this->log_file_name)error_log($log_message,3,$this->log_file_name);
 						if($this->user_email)error_log($log_message,1,$this->user_email,$this->log_error_header);
 
-						echo json_encode($response);
+						echo _e("An error occurred in the Islam Companion Plugin. Please try again.","islam-companion");
 						exit;						
 						//if($this->type=="Exception"||($this->type=="Error"&&$this->error_level==E_ERROR))exit;						
 					}
