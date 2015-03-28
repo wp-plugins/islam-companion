@@ -256,7 +256,7 @@ class IslamCompanionSettingsClass {
 		
 			    $response=file_get_contents(API_URL."?option=".urlencode(base64_encode("get_distinct_languages")));	
 				$response=trim($encryption->DecryptText($response));	
-				$response=json_decode($response,true);
+				$response=json_decode(trim($response),true);
 			 
 			 	if($response['result']!='success')throw new Exception("Error in Islam Companion Plugin. Details: ".$e->getMessage());
 				else $distinct_languages=$response['text'];
@@ -299,7 +299,7 @@ class IslamCompanionSettingsClass {
 				
 			    $response=file_get_contents(API_URL."?option=".urlencode(base64_encode("get_sura_names")));
 				$response=trim($encryption->DecryptText($response));	
-				$response=json_decode($response,true);
+				$response=json_decode(trim($response),true);
 			
 				if($response['result']!='success')throw new Exception("Error in Islam Companion Plugin. Details: ".$e->getMessage());
 				else $sura_names=$response['text'];
@@ -344,8 +344,8 @@ class IslamCompanionSettingsClass {
 			    $current_language=$this->options['ic_language'];
 		
 			    $response=file_get_contents(API_URL."?option=".urlencode(base64_encode("get_distinct_languages_translators")));
-				$response=trim($encryption->DecryptText($response));
-				$response=json_decode($response,true);
+				$response=$encryption->DecryptText($response);
+				$response=json_decode(trim($response),true);
 		
 				if($response['result']!='success')throw new Exception("Error in Islam Companion Plugin. Details: ".$e->getMessage());
 				else $languages_narrator=$response['text'];

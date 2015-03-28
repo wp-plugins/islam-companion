@@ -162,7 +162,7 @@ class Islam_Companion {
 		try
 			{
 				//$mail_from=ini_get("sendmail_from");
-				define("DEBUG",false);
+				define("DEBUG",true);
 				define("LOG_ERROR_EMAIL", 'nadir@nadirlatif.me');
 				define("LOG_ERROR_HEADER", "Subject: Error occured in Islam Companion Plugin. Please Check!\n");
 				define("LOG_FILE_NAME", "");

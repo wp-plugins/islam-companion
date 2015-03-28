@@ -130,18 +130,18 @@ class IC_HolyQuranDashboardWidget {
 					$encryption = new Encryption();
 					
 					$verse_text=$encryption->DecryptText($verse_text);
-					$verse_information=json_decode( $verse_text, true);
+					$verse_information=json_decode( trim($verse_text), true);
 					
-					if($verse_information['result']!="success")throw new Exception("Error in Islam Companion Plugin. Details: ".$e->getMessage());
+					if($verse_information['result']!="success")throw new Exception("Error in Islam Companion Plugin");
 					
 					$start_ayat=$verse_information['start_ayat'];
 					$end_ayat=$verse_information['end_ayat'];
 					$verse_text=$verse_information['text'];
 					$audio_filename=$verse_information['audiofile_name'];
 					$language_information=file_get_contents(API_URL."?option=".urlencode(base64_encode("get_language_information"))."&lang=".urlencode(base64_encode($parsed_options['current_language'])));
-					$language_information=json_decode(trim($encryption->DecryptText($language_information)),true);
+					$language_information=json_decode(trim($encryption->DecryptText(($language_information))),true);
 										
-					if($language_information['result']!="success")throw new Exception("Error in Islam Companion Plugin. Details: ".$e->getMessage());
+					if($language_information['result']!="success")throw new Exception("Error in Islam Companion Plugin");
 					
 					$is_language_rtl=$language_information['text']['rtl'];
 					$css_class=$language_information['text']['css_class'];
