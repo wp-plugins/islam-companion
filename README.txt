@@ -8,7 +8,7 @@ Stable tag: 1.0.5
 License: GPLV2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Islam Companion is a Wordpress plugin that allows you to read the Holy Quran in your own language. It also allows you to listen to the Holy Quran in Arabic and Urdu
+This plugin allows you to read the Holy Quran in over 40 languages. It also allows listening to recitation of Holy Quran in Arabic and Urdu
 
 == Description ==
 The plugin allows you to configure the language, narrator, surah and start ruku from the settings page. The plugin displays verses from the Holy Quran on a dashboard widget. The user can use navigation links to view next and previous verses. The plugin also displays an audio player that recites the quranic verses in Arabic and Urdu 
