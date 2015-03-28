@@ -86,5 +86,5 @@ Search for Islam Companion on https://wordpress.org/plugins/ or login to your wo
 
 == Screenshots ==
 
-1. This screenshot shows how the plugin displays verses from the Holy Quran on the admin dashboard. The user can browse the verses using navigation links. The meta information for the verses is also displayed
-2. This screenshot shows how to change the settings for the plugin. The language, narrator, surah, start ayat and number of ayas can be configured from here
+1. This screenshot shows how the plugin displays verses from the Holy Quran on the admin dashboard. The user can browse the verses using navigation links. The audio player recites the Holy Quran verses in Arabic and Urdu
+2. This screenshot shows how to change the settings for the plugin. The language, narrator, surah, ruku number can be configured from here
