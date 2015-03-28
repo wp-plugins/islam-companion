@@ -1,38 +1,45 @@
 === Islam Companion ===
 Contributors: nadirlatif
-Tags: islam,quran,sunnat,hadith,message of the day,motd
-Donate link: https://www.paypal.com/se/cgi-bin/webscr?cmd=_flow&SESSION=pOGdtsevzNpxZGAJ0cAH1htqgfrTsY_uociX-IkH0-QCBBAMUN38F8y1frK&dispatch=5885d80a13c0db1f8e263663d3faee8d66f31424b43e9a70645c907a6cbd8fb4
+Tags: islam,quran,sunnat,hadith,religion
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=nadir%40nadirlatif%2eme&lc=SE&item_name=Web%20Innovation&item_number=1&currency_code=SEK&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted
 Requires at least: 3.0
 Tested up to: 4.1
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLV2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Islamic Companion is a Wordpress plugin that helps you integrate Islamic principals and values in your daily life
+Islam Companion is a Wordpress plugin that allows you to read the Holy Quran in your own language. It also allows you to listen to the Holy Quran in Arabic and Urdu
 
 == Description ==
-Islamic Companion allows users to learn about Islam and Quran from the comfort of their Wordpress blog. The goal of this plugin is to make it easy for people to learn about Islam and to spread its teachings to others. Currently the plugin has following features:
+The plugin allows you to configure the language, narrator, surah and start ruku from the settings page. The plugin displays verses from the Holy Quran on a dashboard widget. The user can use navigation links to view next and previous verses. The plugin also displays an audio player that recites the quranic verses in Arabic and Urdu 
 
-1. Display verses from the Holy Quran in the language selected by the user. The Quranic verses are displayed on the admin dashboard.
+Currently the plugin supports following languages: Amharic, Arabic, Bosnian, Bengali, Bulgarian, Amazigh, Czech, German, Divehi, Spanish, English, Persian, French, Hindi, Hausa, Indonesian, Italian, Japanese, Korean, Kurdish, Malayalam, Malay, Dutch, Norwegian, Portuguese, Polish, Russian, Romanian, Swedish, Somali, Sindhi, Albanian, Swahili, Turkish, Tajik, Tamil, Tatar, Thai, Uzbek, Urdu, Uyghur and Chinese.
 
-The plugin supports Holy Quran translation in 43 languages. Currently the plugin supports following languages: Amharic, Arabic, Bosnian, Bengali, 
-Bulgarian, Amazigh, Czech, German, Divehi, Spanish, English, Persian, French, Hindi, Hausa, Indonesian, Italian, Japanese, Korean, Kurdish, 
-Malayalam, Malay, Dutch, Norwegian, Portuguese, Polish, Russian, Romanian, Swedish, Somali, Sindhi, Albanian, Swahili, Turkish, Tajik, Tamil, 
-Tatar, Thai, Uzbek, Urdu, Uyghur, Chinese.
-
-Kindly support the plugin by reporting your suggesting or bugs to http://wordpress.org/support/plugin/islam-companion
+You can support the plugin by reporting your suggestions or bugs to http://wordpress.org/support/plugin/islam-companion.
 
 == Installation ==
 Search for Islam Companion on https://wordpress.org/plugins/ or login to your wordpress blog and go to Plugins then Add New and then search for Islam Companion and Install. Another option is to install the plugin manually by following the instructions on http://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation
 
 == Frequently Asked Questions ==
 1. What does this plugin do
-ans. Currently the Islam Companion plugin displays verses from the Holy Quran on the dashboard widget. The verse is displayed according to the user settings. The user can specify the language, narrator, suran, aya and number of verses.
+ans. Currently the Islam Companion plugin displays verses from the Holy Quran on a dashboard widget. The verses are displayed according to the user settings. The user can specify the language, narrator, sura and start ruku of the verses to be displayed. The plugin also displays an audio player that recites the Quranic verses in Arabic and Urdu 
 
 2. Where does the plugin get its data
 ans. The plugin uses Holy Quran translations from http://tanzil.net/trans/
 
 == Changelog ==
+
+= 1.0.5 =
+* Added internationalization and localization to the plugin. The plugin text is displayed in the users own language. Currently the plugin only contains translations in Urdu language. Translations in other languages can easily be created
+* Added multi user and multi site support. It allows each user to have his own plugin settings
+* Added css classes for displaying verses with bullet numbering in the language of the user. If the user language is not supported then a default numbered bullet is displayed
+* Uploaded media files to content delivery network. Added audio player for listening to Quranic Verses
+* Secured the plugin code by adding try/catch statements, exception throwing, exception handling and error logging
+* Removed addslashes function on line 246 in file class-islam-companion-settings.php
+* Corrected PayPal donation link
+* Updated plugin description
+* Replaced option for selecting ayat with option for selecting ruku
+* Renamed "Message of the day" feature to "Holy Quran Dashboard Widget" 
 
 = 1.0.4 =
 * Corrected layout bug in admin dashboard widget 
@@ -56,6 +63,13 @@ ans. The plugin uses Holy Quran translations from http://tanzil.net/trans/
 
 == Upgrade Notice ==
 
+= 1.0.5 =
+* Added internationalization and localization to the plugin. The plugin text is displayed in the users own language. Currently the plugin only contains translations in Urdu language. Translations in other languages can easily be created
+* Added multi user and multi site support. It allows each user to have his own plugin settings
+* Added audio player for listening to Quranic Verses in Arabic and Urdu languages
+* Secured the plugin code by adding error handling and logging
+* Updated settings page and replaced option for selecting ayat with option for selecting ruku
+
 = 1.0.4 =
 * Corrected layout bug in admin dashboard widget 
 * Added default settings for plugin
@@ -74,5 +88,5 @@ ans. The plugin uses Holy Quran translations from http://tanzil.net/trans/
 
 == Screenshots ==
 
-1. This screenshot shows the message for the day feature. Verses from the Holy Quran are displayed on the admin dashboard. The user can browse the verses using navigation links. The meta information for the links is also displayed
-2. This screenshot shows the settings for the plugin. The language and translator for the Quranic verse can be configured here. The surah, aya number and number of ayas can also be configured
+1. This screenshot shows how the plugin displays verses from the Holy Quran on the admin dashboard. The user can browse the verses using navigation links. The meta information for the verses is also displayed
+2. This screenshot shows how to change the settings for the plugin. The language, narrator, surah, start ayat and number of ayas can be configured from here

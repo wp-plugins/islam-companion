@@ -68,14 +68,21 @@ class Islam_Companion {
 	 */
 	public function __construct() {
 
-		$this->plugin_name = 'islam-companion';
-		$this->version = '1.0.0';
-
-		$this->load_dependencies();
-		$this->set_locale();
-		$this->define_admin_hooks();
-		$this->define_public_hooks();
-
+		try
+			{
+				$this->plugin_name = 'islam-companion';
+				$this->version = '1.0.5';
+		
+				$this->load_dependencies();
+				$this->set_error_handling();
+				$this->set_locale();
+				$this->define_admin_hooks();
+				$this->define_public_hooks();
+			}
+		catch(Exception $e)
+			{
+				throw new Exception("Error in Islam Companion Plugin. Details: ".$e->getMessage());
+			}
 	}
 
 	/**
@@ -96,42 +103,82 @@ class Islam_Companion {
 	 */
 	private function load_dependencies() {
 		
-		/**
-		 * The class responsible for encryption/decryption
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/plugins/encryption.php';
-		/**
-		 * The class responsible for constructing the settings page of the plugin
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-islam-companion-settings.php';
+		try
+			{
+				/**
+				 * The class responsible for logging/error handling
+				 */
+				require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/plugins/class-logging.php';
+				/**
+				 * The class responsible for encryption/decryption
+				 */
+				require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/plugins/class-encryption.php';
+				/**
+				 * The class responsible for constructing the settings page of the plugin
+				 */
+				require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-islam-companion-settings.php';
+				
+				/**
+				 * The class responsible for orchestrating the actions and filters of the
+				 * core plugin.
+				 */
+				require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-islam-companion-loader.php';
 		
-		/**
-		 * The class responsible for orchestrating the actions and filters of the
-		 * core plugin.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-islam-companion-loader.php';
-
-		/**
-		 * The class responsible for defining internationalization functionality
-		 * of the plugin.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-islam-companion-i18n.php';
-
-		/**
-		 * The class responsible for defining all actions that occur in the Dashboard.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-islam-companion-admin.php';
-
-		/**
-		 * The class responsible for defining all actions that occur in the public-facing
-		 * side of the site.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-islam-companion-public.php';
-
-		$this->loader = new Islam_Companion_Loader();
-
+				/**
+				 * The class responsible for defining internationalization functionality
+				 * of the plugin.
+				 */
+				require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-islam-companion-i18n.php';
+		
+				/**
+				 * The class responsible for defining all actions that occur in the Dashboard.
+				 */
+				require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-islam-companion-admin.php';
+		
+				/**
+				 * The class responsible for defining all actions that occur in the public-facing
+				 * side of the site.
+				 */
+				require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-islam-companion-public.php';
+		
+				$this->loader = new Islam_Companion_Loader();
+			}
+		catch(Exception $e)
+			{
+				throw new Exception("Error in Islam Companion Plugin. Details: ".$e->getMessage());
+			}
 	}
 
+	/**
+	 * Used to set error handling functions.
+	 *
+	 * Sets the functions that should be called automatically when an error or exception occurs
+	 *
+	 * @since    1.0.5
+	 * @access   private
+	 */
+	private function set_error_handling() {
+
+		try
+			{
+				//$mail_from=ini_get("sendmail_from");
+				define("DEBUG",true);
+				define("LOG_ERROR_EMAIL", 'nadir@nadirlatif.me');
+				define("LOG_ERROR_HEADER", "Subject: Error occured in Islam Companion Plugin. Please Check!\n");
+				define("LOG_FILE_NAME", "");
+				if(!DEBUG&&!defined("API_URL"))define("API_URL","http://nadirlatif.me/scripts/api.php");
+				else if(!defined("API_URL"))define("API_URL","http://dev.webinnovation.com/scripts/api.php");
+				
+				$logger=new Logger();
+				set_error_handler(array($logger,"ErrorHandler"));
+				set_exception_handler(array($logger,"ExceptionHandler"));
+			}
+		catch(Exception $e)
+			{
+				throw new Exception("Error in Islam Companion Plugin. Details: ".$e->getMessage());
+			}
+	}
+	
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
@@ -143,11 +190,17 @@ class Islam_Companion {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Islam_Companion_i18n();
-		$plugin_i18n->set_domain( $this->get_plugin_name() );
+		try
+			{
+				$plugin_i18n = new Islam_Companion_i18n();
+				$plugin_i18n->set_domain( $this->get_plugin_name() );
 
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
-
+				$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
+			}
+		catch(Exception $e)
+			{
+				throw new Exception("Error in Islam Companion Plugin. Details: ".$e->getMessage());
+			}
 	}
 
 	/**
@@ -158,16 +211,23 @@ class Islam_Companion {
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
+			
+		try
+			{
+				$plugin_admin = new Islam_Companion_Admin( $this->get_plugin_name(), $this->get_version() );
 
-		$plugin_admin = new Islam_Companion_Admin( $this->get_plugin_name(), $this->get_version() );
-
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-	  	$this->loader->add_action( 'wp_dashboard_setup', $plugin_admin, 'wp_dashboard_setup_hooks' );
-		$this->loader->add_action( 'admin_head', $plugin_admin, 'admin_head_hooks' );
-		$this->loader->add_action( 'wp_ajax_islam_companion', $plugin_admin, 'islam_companion_callback' );
-		// The settings page for the plugin is created
-		if( is_admin() )$plugin_admin->CreateSettingsPage();
+				$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
+				$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+			  	$this->loader->add_action( 'wp_dashboard_setup', $plugin_admin, 'wp_dashboard_setup_hooks' );
+				$this->loader->add_action( 'admin_head', $plugin_admin, 'admin_head_hooks' );
+				$this->loader->add_action( 'wp_ajax_islam_companion', $plugin_admin, 'islam_companion_callback' );
+				// The settings page for the plugin is created
+				if( is_admin() )$plugin_admin->CreateSettingsPage();
+			}
+		catch(Exception $e)
+			{
+				throw new Exception("Error in Islam Companion Plugin. Details: ".$e->getMessage());
+			}
 	}
 
 	/**
@@ -179,10 +239,17 @@ class Islam_Companion {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Islam_Companion_Public( $this->get_plugin_name(), $this->get_version() );
+		try
+			{
+				$plugin_public = new Islam_Companion_Public( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+				$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
+				$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+			}
+		catch(Exception $e)
+			{
+				throw new Exception("Error in Islam Companion Plugin. Details: ".$e->getMessage());
+			}
 	}
 
 	/**

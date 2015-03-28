@@ -60,7 +60,6 @@ class Islam_Companion_Admin {
 
 		$this->name = $name;
 		$this->version = $version;
-		$this->GetPluginObjects();
 	}
 
   	/**
@@ -72,12 +71,19 @@ class Islam_Companion_Admin {
 	 */
 	private function execute_plugin_function($plugin_class,$function_name) {
 
-		foreach($this->plugin_objects as $temp_plugin_class=>$plugin_object)
+		try
 			{
-				if($temp_plugin_class==$plugin_class||$plugin_class=="All")
+				foreach($this->plugin_objects as $temp_plugin_class=>$plugin_object)
 					{
-						if(method_exists($plugin_object, $function_name))$plugin_object->$function_name();
+						if($temp_plugin_class==$plugin_class||$plugin_class=="All")
+							{
+								if(method_exists($plugin_object, $function_name))$plugin_object->$function_name();
+							}
 					}
+			}
+		catch(Exception $e)
+			{
+				throw new Exception("Error in Islam Companion Plugin. Details: ".$e->getMessage());
 			}
 	}
 	
@@ -99,8 +105,14 @@ class Islam_Companion_Admin {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-		wp_enqueue_style( $this->name, plugin_dir_url( __FILE__ ) . 'css/islam-companion-admin.css', array(), $this->version, 'all' );
-
+		try
+			{
+				wp_enqueue_style( $this->name, plugin_dir_url( __FILE__ ) . 'css/islam-companion-admin.css', array(), $this->version, 'all' );
+			}
+		catch(Exception $e)
+			{
+				throw new Exception("Error in Islam Companion Plugin. Details: ".$e->getMessage());
+			}
 	}
 
 	/**
@@ -122,8 +134,24 @@ class Islam_Companion_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->name, plugin_dir_url( __FILE__ ) . 'js/islam-companion-admin.js', array( 'jquery' ), $this->version, FALSE );
-
+		try
+			{
+				wp_enqueue_script( $this->name, plugin_dir_url( __FILE__ ) . 'js/islam-companion-admin.js', array( 'jquery' ), $this->version, FALSE );
+				wp_localize_script( $this->name, 'objectL10n', array(
+					'language_alert' => __( "Please select a language", "islam-companion" ),
+					'narrator_alert' => __( "Please select a narrator", "islam-companion" ),
+					'sura_alert' => __( "Please select a sura", "islam-companion" ),
+					'ruku_alert' => __( "Please select a ruku", "islam-companion" ),
+					'data_fetch_alert' => __( "An error occurred while trying to get data from server. Please try again", "islam-companion" ),
+					'language_select_text' => __( "Please select a language first", "islam-companion" ),
+					'sura_select_text' => __( "Please select a sura first", "islam-companion" ),
+					'select_text' => __( "Please Select", "islam-companion" ),
+				));
+			}
+		catch(Exception $e)
+			{
+				throw new Exception("Error in Islam Companion Plugin. Details: ".$e->getMessage());
+			}
 	}
 
 	/**
@@ -132,9 +160,16 @@ class Islam_Companion_Admin {
 	 * @since    1.0.0
 	 */
 	public function CreateSettingsPage() {
-		
-		$islam_companion_settings_class = new IslamCompanionSettingsClass($this);
-		
+			
+		try
+			{
+				$islam_companion_settings_class = new IslamCompanionSettingsClass($this);
+				$this->GetPluginObjects();
+			}
+		catch(Exception $e)
+			{
+				throw new Exception("Error in Islam Companion Plugin. Details: ".$e->getMessage());
+			}
 	}
 	
 	/**
@@ -156,27 +191,34 @@ class Islam_Companion_Admin {
 	 * All plugin objects have certain common functions. e.g creating sub menus 
 	 *
 	 * @since    1.0.0
+	 * @var      object    $islam_companion_settings_class The $islam_companion_settings_class object
 	 */
 	private function GetPluginObjects() {		
-
-		$plugin_folder_name=WP_PLUGIN_DIR.DIRECTORY_SEPARATOR."islam-companion/includes/plugins";
-		
-		$file_list=scandir($plugin_folder_name);
-		$this->plugin_objects=array();
-		for($count=0;$count<count($file_list);$count++)
+		try
 			{
-				$file_name=$file_list[$count];
-				if($file_name=="."||$file_name==".."||strpos($file_name,"class-")===false)continue;
+				$plugin_folder_name=WP_PLUGIN_DIR.DIRECTORY_SEPARATOR."islam-companion/includes/plugins";
 				
-				include($plugin_folder_name.DIRECTORY_SEPARATOR.$file_name);
-				$class_name=str_replace("class-", "", $file_name);
-				$class_name=str_replace("-"," ",$class_name);
-				$class_name=ucwords($class_name);
-				$class_name=str_replace(" ", "", $class_name);
-				$class_name=str_replace(".php", "", $class_name);
-				$class_name="IC_".$class_name;
-				$this->plugin_objects[$class_name]=new $class_name();
-			}		
+				$file_list=scandir($plugin_folder_name);
+				$this->plugin_objects=array();
+				for($count=0;$count<count($file_list);$count++)
+					{
+						$file_name=$file_list[$count];
+						if($file_name=="."||$file_name==".."||$file_name=="class-encryption.php"||$file_name=="class-logging.php")continue;
+						
+						include($plugin_folder_name.DIRECTORY_SEPARATOR.$file_name);
+						$class_name=str_replace("class-", "", $file_name);
+						$class_name=str_replace("-"," ",$class_name);
+						$class_name=ucwords($class_name);
+						$class_name=str_replace(" ", "", $class_name);
+						$class_name=str_replace(".php", "", $class_name);
+						$class_name="IC_".$class_name;
+						$this->plugin_objects[$class_name]=new $class_name();
+					}		
+			}
+		catch(Exception $e)
+			{
+				throw new Exception("Error in Islam Companion Plugin. Details: ".$e->getMessage());
+			}
 	}
 	
 	/**
@@ -187,8 +229,14 @@ class Islam_Companion_Admin {
 	 */
 	public function wp_dashboard_setup_hooks() {		
 
-		$this->execute_plugin_function("All","WPDashBoardSetupHook");		
-		
+		try
+			{
+				$this->execute_plugin_function("All","WPDashBoardSetupHook");		
+			}
+		catch(Exception $e)
+			{
+				throw new Exception("Error in Islam Companion Plugin. Details: ".$e->getMessage());
+			}
 	}
 	
 	/**
@@ -199,8 +247,14 @@ class Islam_Companion_Admin {
 	 */
 	public function admin_head_hooks() {		
 		
-		$this->execute_plugin_function("All","AdminHeadHook");
-		
+		try
+			{
+				$this->execute_plugin_function("All","AdminHeadHook");
+			}
+		catch(Exception $e)
+			{
+				throw new Exception("Error in Islam Companion Plugin. Details: ".$e->getMessage());
+			}
 	}
 	
 	/**
@@ -211,13 +265,19 @@ class Islam_Companion_Admin {
 	 */
 	public function islam_companion_callback() {		
 		
-		if(!isset($_POST['plugin'])||!isset($_POST['action']))wp_die();
-		
-		check_ajax_referer('islam-companion', 'security' );
-		
-		$plugin_name=$_POST['plugin'];
-		$this->execute_plugin_function($plugin_name,"IslamCompanionAjax");
-		
+		try
+			{
+				if(!isset($_POST['plugin'])||!isset($_POST['action']))wp_die();
+				
+				check_ajax_referer('islam-companion', 'security' );
+				
+				$plugin_name=$_POST['plugin'];
+				$this->execute_plugin_function($plugin_name,"IslamCompanionAjax");
+			}
+		catch(Exception $e)
+			{
+				throw new Exception("Error in Islam Companion Plugin. Details: ".$e->getMessage());
+			}
 	}
 	
 }

@@ -8,14 +8,12 @@ function ValidateICSettingsForm()
 		var ic_language_str=document.getElementById('ic_language').value;
 		var ic_narrator_str=document.getElementById('ic_narrator').value;
 		var ic_sura_str=document.getElementById('ic_sura').value;
-		var ic_aya_str=document.getElementById('ic_aya').value;
-		var ic_ayat_count_str=document.getElementById('ic_ayat_count').value;
+		var ic_ruku_str=document.getElementById('ic_ruku').value;
 		
-		if(ic_language_str==""){alert("Please select a language");return false;}
-		if(ic_narrator_str==""){alert("Please select a narrator");return false;}
-		if(ic_sura_str==""){alert("Please select a sura");return false;}
-		if(ic_aya_str==""){alert("Please select an ayat");return false;}
-		if(ic_ayat_count_str==""){alert("Please the ayat count");return false;}
+		if(ic_language_str==""){alert(objectL10n.language_alert);return false;}
+		if(ic_narrator_str==""){alert(objectL10n.narrator_alert);return false;}
+		if(ic_sura_str==""){alert(objectL10n.sura_alert);return false;}
+		if(ic_ruku_str==""){alert(objectL10n.ruku_alert);return false;}
 		return true;
 	}
 
@@ -30,13 +28,15 @@ function FetchVerseData(ajax_nonce,direction)
 					action: 'islam_companion',
 					plugin_action: 'fetch_verse_data',
 					security: ajax_nonce,
-					plugin: 'IC_MessageForTheDay',
+					plugin: 'IC_HolyQuranDashboardWidget',
 					direction: direction
 		};
 		
 		// We can also pass the url value separately from ajaxurl for front end AJAX implementations
-		jQuery.post('admin-ajax.php', data, function(response) {						
-			jQuery("#ic-quran-dashboard-text").html(response);
+		jQuery.post('admin-ajax.php', data, function(response) {
+			var result=jQuery.parseJSON(response);						
+			if(result.result=='success')jQuery("#ic-quran-dashboard-text").html(result.text);
+			else alert(objectL10n.data_fetch_alert);
 		});
 	}
 	
@@ -84,8 +84,8 @@ function FetchVerseData(ajax_nonce,direction)
 	  			var ic_narrator_hidden_str=$("#ic_narrator_hidden").val();	  				  			
 	  			var temp_arr=ic_narrator_hidden_str.split("@");
 	  			
-	  			if(ic_language_str!="")$('#ic_narrator').append($('<option></option>').val("").html("--Please Select--"));
-	  			else $('#ic_narrator').append($('<option></option>').val("").html("--Please select a language first--"));
+	  			if(ic_language_str!="")$('#ic_narrator').append($('<option></option>').val("").html("--"+objectL10n.select_text+"--"));
+	  			else $('#ic_narrator').append($('<option></option>').val("").html("--"+objectL10n.language_select_text+"--"));
 	  			for(var count=0;count<temp_arr.length;count++)
 	  				{
 		  				var temp_arr1=temp_arr[count].split("~");
@@ -105,17 +105,17 @@ function FetchVerseData(ajax_nonce,direction)
 		 * @since    1.0.2
 		*/	
 		 $("#ic_sura").on("change",function(){
-			 	$('#ic_aya').empty();
+			 	$('#ic_ruku').empty();
 			 	var ic_sura_str=$("#ic_sura").val();	  			
 			 	ic_sura_str=ic_sura_str.replace('\\','');	  			
 	  			var temp_arr=ic_sura_str.split("~");
-	  			var ayas=parseInt(temp_arr[1]);
+	  			var rukus=parseInt(temp_arr[2]);
 	  			
-	  			if(ic_sura_str!="")$('#ic_aya').append($('<option></option>').val("").html("--Please Select--"));
-	  			else $('#ic_sura').append($('<option></option>').val("").html("--Please select a sura first--"));
-	  			for(var count=1;count<=ayas;count++)
+	  			if(ic_sura_str!="")$('#ic_ruku').append($('<option></option>').val("").html("--"+objectL10n.select_text+"--"));
+	  			else $('#ic_sura').append($('<option></option>').val("").html("--"+objectL10n.sura_select_text+"--"));
+	  			for(var count=1;count<=rukus;count++)
 	  				{
-		  				$('#ic_aya').append($('<option></option>').val(count).html(count));		  				
+		  				$('#ic_ruku').append($('<option></option>').val(count).html(count));		  				
 	  				}
 		 });
 	 });
