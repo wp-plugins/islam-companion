@@ -21,11 +21,9 @@ You can support the plugin by reporting your suggestions or bugs to http://wordp
 Search for Islam Companion on https://wordpress.org/plugins/ or login to your wordpress blog and go to Plugins then Add New and then search for Islam Companion and Install. Another option is to install the plugin manually by following the instructions on http://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation
 
 == Frequently Asked Questions ==
-1. What does this plugin do
-ans. Currently the Islam Companion plugin displays verses from the Holy Quran on a dashboard widget. The verses are displayed according to the user settings. The user can specify the language, narrator, sura and start ruku of the verses to be displayed. The plugin also displays an audio player that recites the Quranic verses in Arabic and Urdu 
+1. What does this plugin do. Currently the Islam Companion plugin displays verses from the Holy Quran on a dashboard widget. The verses are displayed according to the user settings. The user can specify the language, narrator, sura and start ruku of the verses to be displayed. The plugin also displays an audio player that recites the Quranic verses in Arabic and Urdu 
 
-2. Where does the plugin get its data
-ans. The plugin uses Holy Quran translations from http://tanzil.net/trans/
+2. Where does the plugin get its data. The plugin uses Holy Quran translations from http://tanzil.net/trans/
 
 == Changelog ==
 
