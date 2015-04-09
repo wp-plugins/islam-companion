@@ -43,7 +43,7 @@ class Islam_Companion_Admin {
 	/**
      * Holds the plugin objects
 	 *
-	 * @since    2.0.0
+	 * @since    1.0.0
 	 * @access   private
 	 * @var      array    $plugin_objects   The objects of plugin classes.
      */
@@ -65,7 +65,7 @@ class Islam_Companion_Admin {
   	/**
 	 * Executes a function of the given plugin class, or all plugins classes
 	 *
-	 * @since    2.0.0
+	 * @since    1.0.0
 	 * @var      string    $plugin_class       The name of the plugin class.
 	 * @var      string    $function_name    The name of the function.
 	 */
@@ -142,11 +142,13 @@ class Islam_Companion_Admin {
 					'narrator_alert' => __( "Please select a narrator", "islam-companion" ),
 					'sura_alert' => __( "Please select a sura", "islam-companion" ),
 					'ruku_alert' => __( "Please select a ruku", "islam-companion" ),
+					'selected_text_alert' => __( "Please select a word", "islam-companion" ),
 					'data_fetch_alert' => __( "An error occurred while trying to get data from server. Please try again", "islam-companion" ),
 					'language_select_text' => __( "Please select a language first", "islam-companion" ),
 					'sura_select_text' => __( "Please select a sura first", "islam-companion" ),
 					'select_text' => __( "Please Select", "islam-companion" ),
 				));
+				
 			}
 		catch(Exception $e)
 			{

@@ -77,11 +77,12 @@ class IC_HolyQuranDashboardWidget {
 				list($current_language,$current_narrator)=explode("~",$this->options['ic_narrator']);
 			    $current_language=$this->options['ic_language'];
 				$current_ruku=$this->options['ic_ruku'];
+				$online_dictionary_url=$this->options['ic_dictionary'];
 				list($current_sura,$total_ayat_count,$total_rakaat_count)=explode("~",$this->options['ic_sura']);
 		
 				$current_url=API_URL."?option=".urlencode(base64_encode("get_sura_verses"))."&lang=".urlencode(base64_encode($current_language))."&narrator=".urlencode(base64_encode($current_narrator))."&sura=".urlencode(base64_encode($current_sura))."&ruku=".urlencode(base64_encode($current_ruku));
 		
-				$parsed_options=array("total_rakaat_count"=>$total_rakaat_count,"current_language"=>$current_language,
+				$parsed_options=array("online_dictionary_url"=>$online_dictionary_url,"total_rakaat_count"=>$total_rakaat_count,"current_language"=>$current_language,
 				"current_narrator"=>$current_narrator,"current_sura"=>$current_sura,"current_ruku"=>$current_ruku,
 				"current_url"=>$current_url);
 				
@@ -134,6 +135,7 @@ class IC_HolyQuranDashboardWidget {
 					
 					if($verse_information['result']!="success")throw new Exception("Error in Islam Companion Plugin");
 					
+					$online_dictionary_url=$parsed_options['online_dictionary_url'];
 					$start_ayat=$verse_information['start_ayat'];
 					$end_ayat=$verse_information['end_ayat'];
 					$verse_text=$verse_information['text'];
@@ -152,6 +154,8 @@ class IC_HolyQuranDashboardWidget {
 					$meta_information_class='float-left';
 					$navigator_class='navigator-class';
 					$dashboard_text_class=($is_language_rtl=='true')?'rtl-dashboard-text':'ltr-dashboard-text';
+					if($online_dictionary_url!="")$online_dictionary_link="<img id='online-dictionary-link' src='/wp-content/plugins/islam-companion/admin/images/dictionary.png' alt='".__("Dictionary","islam-companion")."' title='".__("Dictionary","islam-companion")."' onclick='OpenDictionaryURL(\"".$online_dictionary_url."\");'/><br/>";
+					else $online_dictionary_link="";
 					
 					$ajax_nonce = wp_create_nonce("islam-companion");			
 					$ayat_text_str="";
@@ -177,11 +181,12 @@ class IC_HolyQuranDashboardWidget {
 					$verse_text_str.="<div id='ic-quran-dashboard-text' class='".$dashboard_text_class."'>".$ayat_text_str;
 					
 					$audio_file_ruku=($parsed_options['current_ruku']<10)?"rukoo0".$parsed_options['current_ruku']:"rukoo".$parsed_options['current_ruku'];
-					$verse_text_str.="<audio controls><source src='http://res-4.cloudinary.com/web-innovation/raw/upload/".$audio_file_ruku.$audio_filename.".mp3' type='audio/mpeg'>".__("Your browser does not support the audio element")."</audio>";	
+					$verse_text_str.=$online_dictionary_link."<audio controls><source src='http://res-4.cloudinary.com/web-innovation/raw/upload/".$audio_file_ruku.$audio_filename.".mp3' type='audio/mpeg'>".__("Your browser does not support the audio element")."</audio>";	
 					$verse_text_str.="<hr/>";					
 					$verse_text_str.="<span class='".$meta_information_class."'><b>".__("Surah","islam-companion")." ".$parsed_options['current_sura'].", ";
 					$verse_text_str.=sprintf("%s %d %s %d",__("Ruku","islam-companion"),$parsed_options['current_ruku'],__("of","islam-companion"),$parsed_options['total_rakaat_count']);
-					$verse_text_str.=sprintf(", %s %d-%d",__("Aya","islam-companion"),$start_ayat,$end_ayat)."</b></span>".$navigation_links."<br/></div>";
+					$verse_text_str.=sprintf(", %s %d-%d",__("Aya","islam-companion"),$start_ayat,$end_ayat)."</b></span>";
+					$verse_text_str.=$navigation_links."<br/></div>";
 
 					return $verse_text_str;
 				}

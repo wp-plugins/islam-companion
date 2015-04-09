@@ -18,3 +18,5 @@
 .thai{list-style-type: thai}
 .decimal{list-style-type: decimal}
 .urdu{list-style-type: urdu;margin-right: 8%;margin-left: 1em;}
+.small-text {font-size: 12px;}
+#online-dictionary-link{cursor:pointer;}

@@ -3,6 +3,26 @@
 	 *
 	 * @since    1.0.0
 */
+
+function GetSelectionText()
+	{
+		var text = "";
+		if (window.getSelection)text = window.getSelection().toString();
+		else if (document.selection && document.selection.type != "Control")text = document.selection.createRange().text;		
+		return text;
+	}
+		
+function OpenDictionaryURL(dictionary_url)
+	{
+		var selected_text=GetSelectionText();
+		if(selected_text=="")alert(objectL10n.selected_text_alert);
+		else
+			{
+				dictionary_url=dictionary_url.replace("{word}",selected_text);
+				window.open(dictionary_url);
+			}
+	}
+	
 function ValidateICSettingsForm()
 	{
 		var ic_language_str=document.getElementById('ic_language').value;
@@ -98,6 +118,7 @@ function FetchVerseData(ajax_nonce,direction)
 		  					}
 	  				}
 		 });
+		 
 		 
 		 /**
 		 * Handles sura dropdown click event
