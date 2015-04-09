@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 This plugin allows you to read the Holy Quran in over 40 languages. It also allows you to listen to Holy Quran recitation in Arabic and Urdu
 
 == Description ==
-The plugin allows you to configure the language, narrator, surah and start ruku from the settings page. The plugin displays verses from the Holy Quran on a dashboard widget. The user can use navigation links to view next and previous verses. The plugin also displays an audio player that recites the quranic verses in Arabic and Urdu 
+The plugin allows you to configure the language, narrator, surah and start ruku from the settings page. The plugin displays verses from the Holy Quran on a dashboard widget. The user can use navigation links to view next and previous verses. The plugin also displays an audio player that recites the quranic verses in Arabic and Urdu. You can also find the meaning of a word using an online dictionary.
 
 Currently the plugin supports following languages: Amharic, Arabic, Bosnian, Bengali, Bulgarian, Amazigh, Czech, German, Divehi, Spanish, English, Persian, French, Hindi, Hausa, Indonesian, Italian, Japanese, Korean, Kurdish, Malayalam, Malay, Dutch, Norwegian, Portuguese, Polish, Russian, Romanian, Swedish, Somali, Sindhi, Albanian, Swahili, Turkish, Tajik, Tamil, Tatar, Thai, Uzbek, Urdu, Uyghur and Chinese.
 
@@ -24,6 +24,8 @@ Search for Islam Companion on https://wordpress.org/plugins/ or login to your wo
 1. What does this plugin do. Currently the Islam Companion plugin displays verses from the Holy Quran on a dashboard widget. The verses are displayed according to the user settings. The user can specify the language, narrator, sura and start ruku of the verses to be displayed. The plugin also displays an audio player that recites the Quranic verses in Arabic and Urdu 
 
 2. Where does the plugin get its data. The plugin uses Holy Quran translations from http://tanzil.net/trans/
+
+3. How does the online dictionary option work. You have to enter the url of an online dictionary. the online dictionary website should allow users to search from urls. e.g if you enter http://urdulughat.info/words/advance-search/name:{word} in the online dictionary field then you can the meaning of Urdu words. The plugin automatically replaces {word} with the word that needs to be looked up
 
 == Changelog ==
 
