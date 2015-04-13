@@ -4,11 +4,11 @@ Tags: islam,quran,sunnat,hadith,religion
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=nadir%40nadirlatif%2eme&lc=SE&item_name=Web%20Innovation&item_number=1&currency_code=SEK&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted
 Requires at least: 3.0
 Tested up to: 4.1
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 License: GPLV2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin allows you to read the Holy Quran in over 40 languages. It also allows you to listen to Holy Quran recitation in Arabic and Urdu
+This plugin allows you to read the Holy Quran in over 40 languages. It also allows you to listen to Holy Quran recitation in Arabic and Urdu.
 
 == Description ==
 The plugin allows you to configure the language, narrator, surah and start ruku from the settings page. The plugin displays verses from the Holy Quran on a dashboard widget. The user can use navigation links to view next and previous verses. The plugin also displays an audio player that recites the quranic verses in Arabic and Urdu. You can also find the meaning of a word using an online dictionary.
@@ -25,9 +25,13 @@ Search for Islam Companion on https://wordpress.org/plugins/ or login to your wo
 
 2. Where does the plugin get its data. The plugin uses Holy Quran translations from http://tanzil.net/trans/
 
-3. How does the online dictionary option work. You have to enter the url of an online dictionary. the online dictionary website should allow users to search from urls. e.g if you enter http://urdulughat.info/words/advance-search/name:{word} in the online dictionary field then you can the meaning of Urdu words. The plugin automatically replaces {word} with the word that needs to be looked up
+3. How does the online dictionary option work. On the Dashboard widget you have to select a word and then click on the dictionary icon. This will open the online dictionary in a new tab. The online dictionary will show the meaning of the selected word 
 
 == Changelog ==
+
+= 1.0.7 =
+* Update online dictionary icon so it gets the dictionary link from database
+* Removed option for entering online dictionary url
 
 = 1.0.6 =
 * Added option for searching for a word using an online dictionary
@@ -44,7 +48,6 @@ Search for Islam Companion on https://wordpress.org/plugins/ or login to your wo
 * Removed addslashes function on line 246 in file class-islam-companion-settings.php
 * Corrected PayPal donation link
 * Updated plugin description
-
 * Renamed "Message of the day" feature to "Holy Quran Dashboard Widget" 
 
 = 1.0.4 =
@@ -68,6 +71,10 @@ Search for Islam Companion on https://wordpress.org/plugins/ or login to your wo
 * Added function that displays Quranic verse at top of the admin page
 
 == Upgrade Notice ==
+
+= 1.0.7 =
+* Update online dictionary icon so it gets the dictionary link from database
+* Removed option for entering online dictionary url
 
 = 1.0.6 =
 * Added option for searching for a word using an online dictionary

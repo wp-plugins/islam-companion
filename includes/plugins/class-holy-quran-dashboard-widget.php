@@ -76,13 +76,12 @@ class IC_HolyQuranDashboardWidget {
 			{
 				list($current_language,$current_narrator)=explode("~",$this->options['ic_narrator']);
 			    $current_language=$this->options['ic_language'];
-				$current_ruku=$this->options['ic_ruku'];
-				$online_dictionary_url=$this->options['ic_dictionary'];
+				$current_ruku=$this->options['ic_ruku'];				
 				list($current_sura,$total_ayat_count,$total_rakaat_count)=explode("~",$this->options['ic_sura']);
 		
 				$current_url=API_URL."?option=".urlencode(base64_encode("get_sura_verses"))."&lang=".urlencode(base64_encode($current_language))."&narrator=".urlencode(base64_encode($current_narrator))."&sura=".urlencode(base64_encode($current_sura))."&ruku=".urlencode(base64_encode($current_ruku));
 		
-				$parsed_options=array("online_dictionary_url"=>$online_dictionary_url,"total_rakaat_count"=>$total_rakaat_count,"current_language"=>$current_language,
+				$parsed_options=array("total_rakaat_count"=>$total_rakaat_count,"current_language"=>$current_language,
 				"current_narrator"=>$current_narrator,"current_sura"=>$current_sura,"current_ruku"=>$current_ruku,
 				"current_url"=>$current_url);
 				
@@ -134,8 +133,7 @@ class IC_HolyQuranDashboardWidget {
 					$verse_information=json_decode( trim($verse_text), true);
 					
 					if($verse_information['result']!="success")throw new Exception("Error in Islam Companion Plugin");
-					
-					$online_dictionary_url=$parsed_options['online_dictionary_url'];
+
 					$start_ayat=$verse_information['start_ayat'];
 					$end_ayat=$verse_information['end_ayat'];
 					$verse_text=$verse_information['text'];
@@ -146,6 +144,8 @@ class IC_HolyQuranDashboardWidget {
 					if($language_information['result']!="success")throw new Exception("Error in Islam Companion Plugin");
 					
 					$is_language_rtl=$language_information['text']['rtl'];
+					$online_dictionary_url=$language_information['text']['dictionary_url'];
+					//$online_dictionary_url="http://urdulughat.info/words/advance-search/name:{word}";
 					$css_class=$language_information['text']['css_class'];
 							
 					$rtl=($is_language_rtl=='true')?'right':'left';

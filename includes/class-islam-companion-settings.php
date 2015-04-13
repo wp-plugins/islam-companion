@@ -136,13 +136,6 @@ class IslamCompanionSettingsClass {
 		            'ic_settings_id'
 		        );
 				
-				add_settings_field(
-		            'ic_dictionary', 
-		            __('Online Dictionary URL','islam-companion'), 
-		            array( $this, 'ic_dictionary_callback' ), 
-		            'islam-companion-settings-admin', 
-		            'ic_settings_id'
-		        );
 		 	}
 		catch(Exception $e)
 			{
@@ -170,7 +163,6 @@ class IslamCompanionSettingsClass {
 				if(!isset($this->options['ic_language'])||(isset($this->options['ic_language'])&&$this->options['ic_language']==''))$this->options['ic_language']="English";
 				if(!isset($this->options['ic_sura'])||(isset($this->options['ic_sura'])&&$this->options['ic_sura']==''))$this->options['ic_sura']="Al-Faatiha~7~1";	
 				if(!isset($this->options['ic_ruku'])||(isset($this->options['ic_ruku'])&&$this->options['ic_ruku']==''))$this->options['ic_ruku']="1";
-				if(!isset($this->options['ic_dictionary'])||(isset($this->options['ic_dictionary'])&&$this->options['ic_dictionary']==''))$this->options['ic_dictionary']="";
 				
 				update_option("ic_options_".$user_id,$this->options);
 			}
@@ -201,10 +193,7 @@ class IslamCompanionSettingsClass {
 		            $new_input['ic_sura'] = sanitize_text_field( $input['ic_sura'] );
 					
 				if( isset( $input['ic_ruku'] ) )
-		            $new_input['ic_ruku'] = sanitize_text_field( $input['ic_ruku'] );
-				
-				if( isset( $input['ic_dictionary'] ) )
-		            $new_input['ic_dictionary'] = sanitize_text_field( $input['ic_dictionary'] );
+		            $new_input['ic_ruku'] = sanitize_text_field( $input['ic_ruku'] );			
 				
 		        return $new_input;
 			}
@@ -220,28 +209,6 @@ class IslamCompanionSettingsClass {
     public function print_section_info()
     {
         print '';
-    }
-	
-	/** 
-     * Displays online dictionary input field 
-     */
-    public function ic_dictionary_callback()
-    {
-    	try
-    		{
-    			$user_id=$this->site_settings['user_id'];
-			    $current_dictionary_url=$this->options['ic_dictionary'];
-			 	
-		        printf(
-				  '<input size="30" id="ic_dictionary" name="ic_options_'.$user_id.'[ic_dictionary]" value="%s"/>%s',
-		            isset( $this->options['ic_dictionary'] ) ? esc_attr( $this->options['ic_dictionary']) : '',
-		            '<br/><i class="small-text">e.g http://urdulughat.info/words/advance-search/name:{word}.<br/>{word}'.__('will be replaced with the selected word','islam-companion').'</i>' 
-		            );
-			}
-		catch(Exception $e)
-			{
-				throw new Exception("Error in Islam Companion Plugin. Details: ".$e->getMessage());
-			}
     }
 	
 	/** 
