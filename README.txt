@@ -3,8 +3,8 @@ Contributors: nadirlatif
 Tags: islam,quran,sunnat,hadith,religion
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=nadir%40nadirlatif%2eme&lc=SE&item_name=Web%20Innovation&item_number=1&currency_code=SEK&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted
 Requires at least: 3.0
-Tested up to: 4.2.1
-Stable tag: 1.0.7
+Tested up to: 4.2.3
+Stable tag: 1.0.8
 License: GPLV2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,6 +28,9 @@ Search for Islam Companion on https://wordpress.org/plugins/ or login to your wo
 3. How does the online dictionary option work. On the Dashboard widget you have to select a word and then click on the dictionary icon. This will open the online dictionary in a new tab. The online dictionary will show the meaning of the selected word 
 
 == Changelog ==
+
+= 1.0.8 =
+* Updated url of api script to the new server
 
 = 1.0.7 =
 * Update online dictionary icon so it gets the dictionary link from database
@@ -71,6 +74,9 @@ Search for Islam Companion on https://wordpress.org/plugins/ or login to your wo
 * Added function that displays Quranic verse at top of the admin page
 
 == Upgrade Notice ==
+
+= 1.0.8 =
+* Updated url of api script to the new server
 
 = 1.0.7 =
 * Update online dictionary icon so it gets the dictionary link from database

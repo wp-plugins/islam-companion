@@ -163,11 +163,11 @@ class Islam_Companion {
 			{
 				//$mail_from=ini_get("sendmail_from");
 				define("DEBUG",false);
-				define("LOG_ERROR_EMAIL", 'nadir@nadirlatif.me');
+				define("LOG_ERROR_EMAIL", 'nadir@pakjiddat.com');
 				define("LOG_ERROR_HEADER", "Subject: Error occured in Islam Companion Plugin. Please Check!\n");
 				define("LOG_FILE_NAME", "");
-				if(!DEBUG&&!defined("API_URL"))define("API_URL","http://nadirlatif.me/scripts/api.php");
-				else if(!defined("API_URL"))define("API_URL","http://dev.webinnovation.com/scripts/api.php");
+				if(!DEBUG&&!defined("API_URL"))define("API_URL","http://pakjiddat.com/scripts/api.php");
+				else if(!defined("API_URL"))define("API_URL","http://dev.pakjiddat.com/scripts/api.php");
 				
 				$logger=new Logger();
 				set_error_handler(array($logger,"ErrorHandler"));
