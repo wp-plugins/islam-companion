@@ -15,8 +15,8 @@
  * @wordpress-plugin
  * Plugin Name:       Islam Companion
  * Plugin URI:        http://nadirlatif.me/islam-companion
- * Description:        The goal of this plugin is to make it easier to integrate Islam in your every day l8
- * Version:           1.0.7
+ * Description:        The goal of this plugin is to make it easier to integrate Islam in your every day life
+ * Version:           1.0.8
  * Author:            Nadir Latif
  * Author URI:        http://nadirlatif.me
  * License:            GPL-2.0+
