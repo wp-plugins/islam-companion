@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 This plugin allows you to read the Holy Quran in over 40 languages. It also allows you to listen to Holy Quran recitation in Arabic and Urdu.
 
 == Description ==
-The plugin displays verses from the Holy Quran on a dashboard widget. The user can use navigation links to view next and previous verses. The plugin also displays an audio player that recites the quranic verses in Arabic and Urdu. You can also find the meaning of a word using an online dictionary.
+The plugin displays verses from the Holy Quran on a dashboard widget. The user can use navigation links to view next and previous verses. The plugin also displays an audio player that recites the quranic verses in Arabic and Urdu. You can also find the meaning of a word using an online dictionary. The settings page allows configuration of Language, Narrator and division information. Division information makes it easier to organize the Holy Quran reading. The reading can be organized with following divisions: Sura, Hizb, Juz, Pages and Manzil 
 
 Currently the plugin supports following languages: Amharic, Arabic, Bosnian, Bengali, Bulgarian, Amazigh, Czech, German, Divehi, Spanish, English, Persian, French, Hindi, Hausa, Indonesian, Italian, Japanese, Korean, Kurdish, Malayalam, Malay, Dutch, Norwegian, Portuguese, Polish, Russian, Romanian, Swedish, Somali, Sindhi, Albanian, Swahili, Turkish, Tajik, Tamil, Tatar, Thai, Uzbek, Urdu, Uyghur and Chinese.
 
@@ -122,4 +122,4 @@ Search for Islam Companion on https://wordpress.org/plugins/ or login to your wo
 == Screenshots ==
 
 1. This screenshot shows how the plugin displays verses from the Holy Quran on the admin dashboard. The user can browse the verses using navigation links. The audio player recites the Holy Quran verses in Arabic and Urdu
-2. This screenshot shows how to change the settings for the plugin. The language, narrator, surah, ruku number can be configured from here
+2. This screenshot shows how to change the settings for the plugin. The language, narrator, surah, ruku number, division and division number can be configured from here
