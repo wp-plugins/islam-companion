@@ -8,21 +8,21 @@
  * registers the activation and deactivation functions, and defines a function
  * this starts the plugin.
  *
- * @link:       http://nadirlatif.me/islam-companion
+ * @link:       	  http://pakjiddat.com
  * @since             1.0.0
  * @package           Islam_Companion
  *
  * @wordpress-plugin
  * Plugin Name:       Islam Companion
- * Plugin URI:        http://nadirlatif.me/islam-companion
- * Description:        The goal of this plugin is to make it easier to integrate Islam in your every day life
- * Version:           1.0.8
- * Author:            Nadir Latif
- * Author URI:        http://nadirlatif.me
- * License:            GPL-2.0+
- * License URI:        http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:            islam-companion
- * Domain Path:            /languages
+ * Plugin URI:        http://pakjiddat.com
+ * Description:       The goal of this plugin is to make it easier to integrate Islam in your every day life
+ * Version:           1.1.0
+ * Author:            Pak Jiddat
+ * Author URI:        http://pakjiddat.com
+ * License:           GPL-2.0+
+ * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * Text Domain:       islam-companion
+ * Domain Path:       /languages
  */
 
 // If this file is called directly, abort.

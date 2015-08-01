@@ -6,7 +6,7 @@
  * A class definition that includes attributes and functions used across both the
  * public-facing side of the site and the dashboard.
  *
- * @link:       http://nadirlatif.me/islam-companion
+ * @link:       http://pakjiddat.com
  * @since      1.0.0
  *
  * @package    Islam_Companion
@@ -25,7 +25,7 @@
  * @since      1.0.0
  * @package    Islam_Companion
  * @subpackage Islam_Companion/includes
- * @author:       Nadir Latif <nadir@nadirlatif.me>
+ * @author:       Nadir Latif <nadir@pakjiddat.com>
  */
 class Islam_Companion {
 
@@ -71,7 +71,7 @@ class Islam_Companion {
 		try
 			{
 				$this->plugin_name = 'islam-companion';
-				$this->version = '1.0.5';
+				$this->version = '1.0.8';
 		
 				$this->load_dependencies();
 				$this->set_error_handling();
@@ -162,10 +162,10 @@ class Islam_Companion {
 		try
 			{
 				//$mail_from=ini_get("sendmail_from");
-				define("DEBUG",false);
-				define("LOG_ERROR_EMAIL", 'nadir@pakjiddat.com');
-				define("LOG_ERROR_HEADER", "Subject: Error occured in Islam Companion Plugin. Please Check!\n");
-				define("LOG_FILE_NAME", "");
+				if(!defined("DEBUG"))define("DEBUG",false);
+				if(!defined("LOG_ERROR_EMAIL"))define("LOG_ERROR_EMAIL", 'nadir@pakjiddat.com');
+				if(!defined("LOG_ERROR_HEADER"))define("LOG_ERROR_HEADER", "Subject: Error occured in Islam Companion Plugin. Please Check!\n");
+				if(!defined("LOG_FILE_NAME"))define("LOG_FILE_NAME", "");
 				if(!DEBUG&&!defined("API_URL"))define("API_URL","http://pakjiddat.com/scripts/api.php");
 				else if(!defined("API_URL"))define("API_URL","http://dev.pakjiddat.com/scripts/api.php");
 				

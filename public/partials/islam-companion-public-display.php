@@ -5,7 +5,7 @@
  *
  * This file is used to markup the public-facing aspects of the plugin.
  *
- * @link:       http://nadirlatif.me/islam-companion
+ * @link:       http://pakjiddat.com
  * @since      1.0.0
  *
  * @package    Islam_Companion

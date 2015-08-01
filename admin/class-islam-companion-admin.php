@@ -3,7 +3,7 @@
 /**
  * The dashboard-specific functionality of the plugin.
  *
- * @link:       http://nadirlatif.me/islam-companion
+ * @link:       http://pakjiddat.com
  * @since      1.0.0
  *
  * @package    Islam_Companion
@@ -18,7 +18,7 @@
  *
  * @package    Islam_Companion
  * @subpackage Islam_Companion/admin
- * @author:       Nadir Latif <nadir@nadirlatif.me>
+ * @author:       Nadir Latif <nadir@pakjiddat.com>
  */
 class Islam_Companion_Admin {
 
@@ -144,11 +144,15 @@ class Islam_Companion_Admin {
 					'ruku_alert' => __( "Please select a ruku", "islam-companion" ),
 					'selected_text_alert' => __( "Please select a word", "islam-companion" ),
 					'data_fetch_alert' => __( "An error occurred while trying to get data from server. Please try again", "islam-companion" ),
-					'language_select_text' => __( "Please select a language first", "islam-companion" ),
+					'language_select_text' => __( "Please select a language", "islam-companion" ),
 					'sura_select_text' => __( "Please select a sura first", "islam-companion" ),
+					'division_select_text' => __( "Please select a division first", "islam-companion" ),
+					'division_number_select_text' => __( "Please select a division number first", "islam-companion" ),
 					'select_text' => __( "Please Select", "islam-companion" ),
-				));
-				
+					'division_alert' => __( "Please select a division first", "islam-companion" ),
+					'division_number_alert' => __( "Please select a division number first", "islam-companion" ),
+					'ayat_text' => __( "Please select an ayat first", "islam-companion" )					
+				));				
 			}
 		catch(Exception $e)
 			{

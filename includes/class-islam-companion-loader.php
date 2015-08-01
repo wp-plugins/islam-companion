@@ -3,7 +3,7 @@
 /**
  * Register all actions and filters for the plugin
  *
- * @link:       http://nadirlatif.me/islam-companion
+ * @link:       http://pakjiddat.com
  * @since      1.0.0
  *
  * @package    Islam_Companion
@@ -19,7 +19,7 @@
  *
  * @package    Islam_Companion
  * @subpackage Islam_Companion/includes
- * @author:       Nadir Latif <nadir@nadirlatif.me>
+ * @author:       Nadir Latif <nadir@pakjiddat.com>
  */
 class Islam_Companion_Loader {
 

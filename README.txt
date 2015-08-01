@@ -3,15 +3,15 @@ Contributors: nadirlatif
 Tags: islam,quran,sunnat,hadith,religion
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=nadir%40nadirlatif%2eme&lc=SE&item_name=Web%20Innovation&item_number=1&currency_code=SEK&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted
 Requires at least: 3.0
-Tested up to: 4.2.3
-Stable tag: 1.0.8
+Tested up to: 4.2.2
+Stable tag: 1.1.0
 License: GPLV2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 This plugin allows you to read the Holy Quran in over 40 languages. It also allows you to listen to Holy Quran recitation in Arabic and Urdu.
 
 == Description ==
-The plugin allows you to configure the language, narrator, surah and start ruku from the settings page. The plugin displays verses from the Holy Quran on a dashboard widget. The user can use navigation links to view next and previous verses. The plugin also displays an audio player that recites the quranic verses in Arabic and Urdu. You can also find the meaning of a word using an online dictionary.
+The plugin displays verses from the Holy Quran on a dashboard widget. The user can use navigation links to view next and previous verses. The plugin also displays an audio player that recites the quranic verses in Arabic and Urdu. You can also find the meaning of a word using an online dictionary.
 
 Currently the plugin supports following languages: Amharic, Arabic, Bosnian, Bengali, Bulgarian, Amazigh, Czech, German, Divehi, Spanish, English, Persian, French, Hindi, Hausa, Indonesian, Italian, Japanese, Korean, Kurdish, Malayalam, Malay, Dutch, Norwegian, Portuguese, Polish, Russian, Romanian, Swedish, Somali, Sindhi, Albanian, Swahili, Turkish, Tajik, Tamil, Tatar, Thai, Uzbek, Urdu, Uyghur and Chinese.
 
@@ -29,8 +29,12 @@ Search for Islam Companion on https://wordpress.org/plugins/ or login to your wo
 
 == Changelog ==
 
+= 1.1.0 =
+* Added option for selecting Holy Quran divisions
+* Updated the Holy Quran Dashboard widget layout
+
 = 1.0.8 =
-* Updated url of api script to the new server
+* Update api server url
 
 = 1.0.7 =
 * Update online dictionary icon so it gets the dictionary link from database
@@ -75,8 +79,14 @@ Search for Islam Companion on https://wordpress.org/plugins/ or login to your wo
 
 == Upgrade Notice ==
 
+= 1.1.0 =
+* Added option for selecting Holy Quran divisions on the settings page
+* Updated the Holy Quran Dashboard widget layout
+* Updated remote API to object oriented class based format
+* Unit tested the remote API
+
 = 1.0.8 =
-* Updated url of api script to the new server
+* Update api server url
 
 = 1.0.7 =
 * Update online dictionary icon so it gets the dictionary link from database

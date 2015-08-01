@@ -4,7 +4,7 @@
  *
  * A class definition that includes attributes and functions used for logging/error handling.
  *
- * @link:      http://nadirlatif.me/islam-companion
+ * @link:      http://pakjiddat.com
  * @since      1.0.5
  *
  * @package    Islam_Companion
@@ -24,7 +24,7 @@
  * @since      1.0.5
  * @package    Islam_Companion
  * @subpackage Islam_Companion/includes
- * @author:    Nadir Latif <nadir@nadirlatif.me>
+ * @author:    Nadir Latif <nadir@pakjiddat.com>
  */
 class Logger
 	{
@@ -92,7 +92,7 @@ class Logger
 					{
 						$response['data']=nl2br($response['data']);
 						if(DEBUG)echo json_encode(array("result"=>'error',"text"=>$response));
-						else _e("An error occurred in the Islam Companion Plugin. Please try again.","islam-companion");													
+						else _e("An error occurred in the Islam Companion Plugin. Please contact the plugin author at https://wordpress.org/support/plugin/islam-companion.","islam-companion");													
 						exit;
 					}
 			}
@@ -132,7 +132,7 @@ class Logger
 						if($this->log_file_name)error_log($log_message,3,$this->log_file_name);
 						if($this->user_email)error_log($log_message,1,$this->user_email,$this->log_error_header);
 
-						echo _e("An error occurred in the Islam Companion Plugin. Please try again.","islam-companion");
+						echo _e("An error occurred in the Islam Companion Plugin. Please contact the plugin author at https://wordpress.org/support/plugin/islam-companion.","islam-companion");
 						exit;						
 						//if($this->type=="Exception"||($this->type=="Error"&&$this->error_level==E_ERROR))exit;						
 					}
@@ -140,7 +140,7 @@ class Logger
 					{
 						$response['data']=nl2br($response['data']);
 						if(DEBUG)echo json_encode($response);
-						else _e("An error occurred in the Islam Companion Plugin. Please try again.","islam-companion");				
+						else _e("An error occurred in the Islam Companion Plugin. Please contact the plugin author at https://wordpress.org/support/plugin/islam-companion.","islam-companion");				
 						exit;
 					}				
 			}				
