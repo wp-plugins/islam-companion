@@ -204,7 +204,7 @@ class IC_HolyQuranDashboardWidget {
 					$previous_link_text=($is_language_rtl=='false')?"&laquo; ".__("prev","islam-companion"):__("prev","islam-companion")." &raquo;";
 					$navigation_links=$previous_link=$next_link=$separator="";
 					
-					$previous_link="<b><button class='button button-primary' onclick='FetchVerseData(\"".$ajax_nonce."\",\"prev\");'>".$previous_link_text."</button>";			 									
+					$previous_link="<button class='button button-primary' onclick='FetchVerseData(\"".$ajax_nonce."\",\"prev\");'>".$previous_link_text."</button>";			 									
 					$next_link="<button class='button button-primary' onclick='FetchVerseData(\"".$ajax_nonce."\",\"next\");'>".$next_link_text."</button>";										
 					$separator="&nbsp;&nbsp;";
 					
@@ -275,7 +275,7 @@ class IC_HolyQuranDashboardWidget {
 		$this->options['ic_ayat']=$navigation_options['ayat'];
 		$this->options['ic_ruku']=$navigation_options['sura_ruku'];												
 		
-		update_option("ic_options_".$user_id,$this->options);		
+		update_option('ic_options_'.$user_id,$this->options);	
 	}
 	
 	/**
@@ -309,8 +309,8 @@ class IC_HolyQuranDashboardWidget {
 		$this->options['ic_division_number']=$division_start_information['data']['division_number']."~".$division_start_information['data']['sindex']."~".$division_start_information['data']['ayat'];
 		$this->options['ic_ayat']=$division_start_information['data']['ayat'];
 		$this->options['ic_ruku']=$division_start_information['data']['sura_ruku'];
-
-		update_option("ic_options_".$user_id,$this->options);		
+	
+		update_option('ic_options_'.$user_id,$this->options);		
 	}
 	
 	/**

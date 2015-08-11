@@ -138,6 +138,15 @@ function FetchVerseData(ajax_nonce,direction)
 		 *
 		 * @since    1.0.0
 		*/		 
+		if(jQuery("#ic_narrator").html()!=undefined)
+			{
+				jQuery('#ic_division_number').parent().parent().hide();
+				jQuery('#ic_ayat').parent().parent().hide();	  			
+			  	jQuery('#ic_ruku').parent().parent().hide();		
+	  			jQuery('#ic_sura').parent().parent().hide();
+	  			jQuery('#ic_form').show();
+	  		}
+	  		
 		 jQuery("#ic_language").on("change",function(){
 			 	jQuery('#ic_narrator').empty();
 			 	var ic_language_str=jQuery("#ic_language").val();	  			

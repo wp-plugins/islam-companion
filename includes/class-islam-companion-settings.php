@@ -62,23 +62,14 @@ class IslamCompanionSettingsClass {
     {
     		try
 	    		{
-			        // Set class property
-			        $this->options = get_option( 'ic_options_'.$this->site_settings['user_id'] );
-					
-					$dropdown_values=json_encode(array(
-								"division"=>$this->options['ic_division'],
-								"division_number"=>$this->options['ic_division_number'],
-								"ayat"=>$this->options['ic_ayat'],
-								"sura"=>$this->options['ic_sura'],
-					));
-					
-			        ?>
+	    			$user_id=$this->site_settings['user_id'];
+	    			$this->options = get_option( 'ic_options_'.$this->site_settings['user_id'] );
+?>
 			        <div class="wrap">
 			            <?php screen_icon(); ?>
 			            <h2><?php _e("Islam Companion Settings","islam-companion");?></h2>           
-			            <form method="post" action="options.php" id="ic_form">
-			            <input type="hidden" name="ic_dropdown_values" id="ic_dropdown_values" value='<?php echo $dropdown_values;?>'/>			
-			            <input type="hidden" name="ic_ajax_nonce" id="ic_ajax_nonce" value="<?php echo wp_create_nonce("islam-companion");?>"/>            
+			            <form method="post" action="options.php" id="ic_form" class="ic-hidden">			           		
+			            <input type="hidden" name="ic_ajax_nonce" id="ic_ajax_nonce" value="<?php echo wp_create_nonce("islam-companion");?>"/>
 			            <?php
 			                // This prints out all hidden setting fields
 			                settings_fields( 'ic_option_group' );   
@@ -115,8 +106,7 @@ class IslamCompanionSettingsClass {
     		{
     			$this->SetDefaultOptions();
     			$user_id=$this->site_settings['user_id'];
-				$ic_division=$ic_division=$this->options['ic_division'];			
-				
+
 		        register_setting(
 		            'ic_option_group', // Option group
 		            'ic_options_'.$user_id, // Option name
@@ -152,7 +142,39 @@ class IslamCompanionSettingsClass {
 		            array( $this, 'ic_division_callback' ), 
 		            'islam-companion-settings-admin', 
 		            'ic_settings_id'
-		        );		
+		        );	
+				
+				add_settings_field(
+					'ic_division_number', 
+				    '',
+				    array( $this, 'ic_division_number_callback' ), 
+				    'islam-companion-settings-admin', 
+				    'ic_settings_id'
+				);
+						
+				add_settings_field(
+		            'ic_sura', 
+		            '', 
+		            array( $this, 'ic_sura_callback' ), 
+		            'islam-companion-settings-admin', 
+		            'ic_settings_id'
+		        );								
+				
+				add_settings_field(
+					'ic_ayat', 
+					'',
+				 	array( $this, 'ic_ayat_callback' ), 
+				   	'islam-companion-settings-admin', 
+				   	'ic_settings_id'
+				);  
+						
+				add_settings_field(
+					'ic_ruku', 
+				  	'',
+				    array( $this, 'ic_ruku_callback' ), 
+					'islam-companion-settings-admin', 
+				  	'ic_settings_id'
+				);
 		 	}
 		catch(Exception $e)
 			{
@@ -208,10 +230,22 @@ class IslamCompanionSettingsClass {
 		            $new_input['ic_language'] = sanitize_text_field( $input['ic_language'] );
 		
 		        if( isset( $input['ic_narrator'] ) )
-		            $new_input['ic_narrator'] = sanitize_text_field( $input['ic_narrator'] );	
+		            $new_input['ic_narrator'] = sanitize_text_field( $input['ic_narrator'] );
+		            
+				if( isset( $input['ic_sura'] ) )
+		            $new_input['ic_sura'] = sanitize_text_field( $input['ic_sura'] );
+					
+				if( isset( $input['ic_ruku'] ) )
+		            $new_input['ic_ruku'] = sanitize_text_field( $input['ic_ruku'] );			
 				
 				if( isset( $input['ic_division'] ) )
-		            $new_input['ic_division'] = sanitize_text_field( $input['ic_division'] );
+		            $new_input['ic_division'] = sanitize_text_field( $input['ic_division'] );		
+				
+				if( isset( $input['ic_division_number'] ) )
+		            $new_input['ic_division_number'] = sanitize_text_field( $input['ic_division_number'] );	
+				
+				if( isset( $input['ic_ayat'] ) )
+		            $new_input['ic_ayat'] = sanitize_text_field( $input['ic_ayat'] );		
 				
 		        return $new_input;
 			}
@@ -227,6 +261,102 @@ class IslamCompanionSettingsClass {
     public function print_section_info()
     {
         print '';
+    }
+	
+	/** 
+     * Displays sura number callback dropdown
+     */
+    public function ic_sura_callback()
+    {
+    	try
+    		{
+    			$user_id=$this->site_settings['user_id'];
+	    		$this->options = get_option( 'ic_options_'.$this->site_settings['user_id'] );
+				
+			    $options="";
+				
+		        printf(
+				  '<input type="hidden" id="ic_sura" name="ic_options_'.$user_id.'[ic_sura]" value="%s"/>',
+		            isset( $this->options['ic_ayat'] ) ? esc_attr( $this->options['ic_sura']) : '',
+		            $options
+		        );
+			}
+		catch(Exception $e)
+			{
+				throw new Exception("Error in Islam Companion Plugin. Details: ".$e->getMessage());
+			}
+    }
+	
+	/** 
+     * Displays ruku number callback dropdown
+     */
+    public function ic_ruku_callback()
+    {
+    	try
+    		{
+    			$user_id=$this->site_settings['user_id'];
+	    		$this->options = get_option( 'ic_options_'.$this->site_settings['user_id'] );
+				
+			    $options="";
+				
+		        printf(
+				  '<input type="hidden" id="ic_ruku" name="ic_options_'.$user_id.'[ic_ruku]" value="%s"/>',
+		            isset( $this->options['ic_ruku'] ) ? esc_attr( $this->options['ic_ruku']) : '',
+		            $options
+		        );
+			}
+		catch(Exception $e)
+			{
+				throw new Exception("Error in Islam Companion Plugin. Details: ".$e->getMessage());
+			}
+    }
+	
+	/** 
+     * Displays division number callback dropdown
+     */
+    public function ic_division_number_callback()
+    {
+    	try
+    		{
+    			$user_id=$this->site_settings['user_id'];
+	    		$this->options = get_option( 'ic_options_'.$this->site_settings['user_id'] );
+				
+			    $options="";
+				
+		        printf(
+				  '<input type="hidden" id="ic_division_number" name="ic_options_'.$user_id.'[ic_division_number]" value="%s"/>',
+		            isset( $this->options['ic_division_number'] ) ? esc_attr( $this->options['ic_division_number']) : '',
+		            $options
+		        );
+			}
+		catch(Exception $e)
+			{
+				throw new Exception("Error in Islam Companion Plugin. Details: ".$e->getMessage());
+			}
+    }
+	
+	/** 
+     * Displays ayat number callback dropdown
+     */
+    public function ic_ayat_callback()
+    {
+    	try
+    		{
+    			$user_id=$this->site_settings['user_id'];
+	    		$this->options = get_option( 'ic_options_'.$this->site_settings['user_id'] );
+				
+			    $options="";
+				
+		        printf(
+				  '<input type="hidden" id="ic_ayat" name="ic_options_'.$user_id.'[ic_ayat]" value="%s"/>',
+		            isset( $this->options['ic_ayat'] ) ? esc_attr( $this->options['ic_ayat']) : '',
+		            $options
+		        );
+			}
+		catch(Exception $e)
+			{
+				throw new Exception("Error in Islam Companion Plugin. Details: ".$e->getMessage());
+			}
     }
 	
 	/** 

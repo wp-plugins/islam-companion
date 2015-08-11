@@ -71,7 +71,7 @@ class Islam_Companion {
 		try
 			{
 				$this->plugin_name = 'islam-companion';
-				$this->version = '1.0.8';
+				$this->version = '1.2.0';
 		
 				$this->load_dependencies();
 				$this->set_error_handling();
@@ -162,7 +162,7 @@ class Islam_Companion {
 		try
 			{
 				//$mail_from=ini_get("sendmail_from");
-				if(!defined("DEBUG"))define("DEBUG",true);
+				if(!defined("DEBUG"))define("DEBUG",false);
 				if(!defined("LOG_ERROR_EMAIL"))define("LOG_ERROR_EMAIL", 'nadir@pakjiddat.com');
 				if(!defined("LOG_ERROR_HEADER"))define("LOG_ERROR_HEADER", "Subject: Error occured in Islam Companion Plugin. Please Check!\n");
 				if(!defined("LOG_FILE_NAME"))define("LOG_FILE_NAME", "");
