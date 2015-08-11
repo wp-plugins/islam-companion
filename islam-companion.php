@@ -16,7 +16,7 @@
  * Plugin Name:       Islam Companion
  * Plugin URI:        http://pakjiddat.com
  * Description:       The goal of this plugin is to make it easier to integrate Islam in your every day life
- * Version:           1.1.0
+ * Version:           1.2.0
  * Author:            Pak Jiddat
  * Author URI:        http://pakjiddat.com
  * License:           GPL-2.0+

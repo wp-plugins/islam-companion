@@ -5,8 +5,8 @@
 .ic-float-left{float:left;font-size: 10pt;}
 .ic-float-right{float:right;font-size: 10pt;}
 .ic-navigator-class{font-size: 10pt;cursor: pointer;float:right;}
-.ic-rtl-dashboard-text{line-height:25px;font-size: 13pt;direction:rtl;text-align:right;word-wrap: break-word;font-weight: bold;}
-.ic-ltr-dashboard-text{direction:ltr;text-align:left;word-wrap: break-word;}
+.ic-rtl-dashboard-text{line-height:30px;font-size: 13pt;direction:rtl;text-align:right;word-wrap: break-word;font-weight: normal;}
+.ic-ltr-dashboard-text{direction:ltr;text-align:left;word-wrap: break-word;font-weight: normal; }
 .persian{list-style-type: persian;margin-right: 8%;}
 .amharic{list-style-type: amharic}
 .arabic-indic{list-style-type: arabic-indic;margin-right: 8%;}
@@ -24,4 +24,5 @@
 .ic-hidden{display:none;}
 .section-padding{padding-bottom:10px;height:20px;}
 .ic-audio-control{padding-right:20px;width:50%;max-height:35px;float:left;}
-.ic-sura-heading{font-size: 10pt;}
+.ic-sura-heading{font-size: 10pt;font-weight: bold;}
+#division_number_box{width:60px;}

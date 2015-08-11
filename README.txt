@@ -3,35 +3,43 @@ Contributors: nadirlatif
 Tags: islam,quran,sunnat,hadith,religion
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=nadir%40nadirlatif%2eme&lc=SE&item_name=Web%20Innovation&item_number=1&currency_code=SEK&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted
 Requires at least: 3.0
-Tested up to: 4.2.2
-Stable tag: 1.1.0
+Tested up to: 4.2.4
+Stable tag: 1.2.0
 License: GPLV2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 This plugin allows you to read the Holy Quran in over 40 languages. It also allows you to listen to Holy Quran recitation in Arabic and Urdu.
 
 == Description ==
-The plugin displays verses from the Holy Quran on a dashboard widget. The user can use navigation links to view next and previous verses. The plugin also displays an audio player that recites the quranic verses in Arabic and Urdu. You can also find the meaning of a word using an online dictionary. The settings page allows configuration of Language, Narrator and division information. Division information makes it easier to organize the Holy Quran reading. The reading can be organized with following divisions: Sura, Hizb, Juz, Pages and Manzil 
+The plugin displays verses from the Holy Quran on a dashboard widget. The user can use navigation links to read the verses. The plugin also displays an audio player that recites the quranic verses in Arabic and Urdu. You can also find the meaning of a word using an online dictionary. The settings page allows configuration of Language, Narrator and Division. Division option makes it easier to organize the Holy Quran reading. The reading can be organized with following divisions: Sura, Hizb, Juz, Page and Manzil 
 
 Currently the plugin supports following languages: Amharic, Arabic, Bosnian, Bengali, Bulgarian, Amazigh, Czech, German, Divehi, Spanish, English, Persian, French, Hindi, Hausa, Indonesian, Italian, Japanese, Korean, Kurdish, Malayalam, Malay, Dutch, Norwegian, Portuguese, Polish, Russian, Romanian, Swedish, Somali, Sindhi, Albanian, Swahili, Turkish, Tajik, Tamil, Tatar, Thai, Uzbek, Urdu, Uyghur and Chinese.
 
-You can support the plugin by reporting your suggestions or bugs to http://wordpress.org/support/plugin/islam-companion.
+You can support the plugin by sending a donation via Paypal or reporting your suggestions or bugs to http://wordpress.org/support/plugin/islam-companion.
 
 == Installation ==
 Search for Islam Companion on https://wordpress.org/plugins/ or login to your wordpress blog and go to Plugins then Add New and then search for Islam Companion and Install. Another option is to install the plugin manually by following the instructions on http://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation
 
 == Frequently Asked Questions ==
-1. What does this plugin do. Currently the Islam Companion plugin displays verses from the Holy Quran on a dashboard widget. The verses are displayed according to the user settings. The user can specify the language, narrator, sura and start ruku of the verses to be displayed. The plugin also displays an audio player that recites the Quranic verses in Arabic and Urdu 
+1. What does this plugin do. Currently the Islam Companion plugin displays a Holy Quran navigator on a Dashboard widget. The verses are displayed according to the user settings. The user can specify the language, narrator and division from the settings page. The plugin also displays an audio player that recites the Quranic verses in Arabic and Urdu 
 
-2. Where does the plugin get its data. The plugin uses Holy Quran translations from http://tanzil.net/trans/
+2. Where does the plugin get its data. The plugin uses Holy Quran translations from http://tanzil.net/trans/ and Holy Quran audio from http://www.quranurdu.com/
 
 3. How does the online dictionary option work. On the Dashboard widget you have to select a word and then click on the dictionary icon. This will open the online dictionary in a new tab. The online dictionary will show the meaning of the selected word 
 
 == Changelog ==
 
+= 1.2.0 =
+* Added options for navigating the Holy Quran from the Dashboard widget
+* Removed some of the navigation options from the settings page
+* Updated the remote API
+* Changed verse number to decimal format for all left to right languages that do not have browser support for numbering
+
 = 1.1.0 =
-* Added option for selecting Holy Quran divisions
+* Added option for selecting Holy Quran divisions on the settings page
 * Updated the Holy Quran Dashboard widget layout
+* Updated remote API to object oriented class based format
+* Unit tested the remote API
 
 = 1.0.8 =
 * Update api server url
@@ -79,11 +87,15 @@ Search for Islam Companion on https://wordpress.org/plugins/ or login to your wo
 
 == Upgrade Notice ==
 
+= 1.2.0 =
+* Added options for navigating the Holy Quran from the Dashboard widget
+* Removed some of the navigation options from the settings page
+* Updated the remote API
+* Changed verse number to decimal format for all left to right languages that do not have browser support for numbering
+
 = 1.1.0 =
-* Added option for selecting Holy Quran divisions on the settings page
+* Added option for selecting Holy Quran divisions
 * Updated the Holy Quran Dashboard widget layout
-* Updated remote API to object oriented class based format
-* Unit tested the remote API
 
 = 1.0.8 =
 * Update api server url
@@ -122,4 +134,4 @@ Search for Islam Companion on https://wordpress.org/plugins/ or login to your wo
 == Screenshots ==
 
 1. This screenshot shows how the plugin displays verses from the Holy Quran on the admin dashboard. The user can browse the verses using navigation links. The audio player recites the Holy Quran verses in Arabic and Urdu
-2. This screenshot shows how to change the settings for the plugin. The language, narrator, surah, ruku number, division and division number can be configured from here
+2. This screenshot shows how to change the settings for the plugin. The language, narrator and division can be configured from here
