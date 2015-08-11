@@ -71,7 +71,7 @@ class Islam_Companion {
 		try
 			{
 				$this->plugin_name = 'islam-companion';
-				$this->version = '1.2.0';
+				$this->version = '1.2.1';
 		
 				$this->load_dependencies();
 				$this->set_error_handling();
