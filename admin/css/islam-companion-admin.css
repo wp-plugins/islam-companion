@@ -5,8 +5,8 @@
 .ic-float-left{float:left;font-size: 10pt;}
 .ic-float-right{float:right;font-size: 10pt;}
 .ic-navigator-class{font-size: 10pt;cursor: pointer;float:right;}
-.ic-rtl-dashboard-text{line-height:30px;font-size: 13pt;direction:rtl;text-align:right;word-wrap: break-word;font-weight: normal;}
-.ic-ltr-dashboard-text{direction:ltr;text-align:left;word-wrap: break-word;font-weight: normal; }
+.ic-rtl-dashboard-text{line-height:30px;font-size: 13pt;direction:rtl;text-align:right;word-wrap: break-word;font-weight: bold;}
+.ic-ltr-dashboard-text{direction:ltr;text-align:left;word-wrap: break-word;font-weight: bold; }
 .persian{list-style-type: persian;margin-right: 8%;}
 .amharic{list-style-type: amharic}
 .arabic-indic{list-style-type: arabic-indic;margin-right: 8%;}

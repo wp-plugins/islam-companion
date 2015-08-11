@@ -34,6 +34,7 @@ Search for Islam Companion on https://wordpress.org/plugins/ or login to your wo
 * Removed some of the navigation options from the settings page
 * Updated the remote API
 * Changed verse number to decimal format for all left to right languages that do not have browser support for numbering
+* Added remote API to version control
 
 = 1.1.0 =
 * Added option for selecting Holy Quran divisions on the settings page
